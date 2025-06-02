@@ -1,4 +1,4 @@
 base_url = "https://spotify-deemo-dabin.netlify.app/"
 title = "spotify-deemo-dabin"
 
-output_dir = "dist"
+output_dir = "build_output"
