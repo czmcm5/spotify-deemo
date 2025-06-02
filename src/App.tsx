@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router";
+import "./App.css";
+import React, { Suspense } from "react";
+
+const AppLayout = React.lazy(() => import("./component/AppLayout"));
+const HomePage = React.lazy(() => import("./page/Home/HomePage"));
+const SearchPage = React.lazy(() => import("./page/Search/SearchPage"));
+const SearchWithKeywordPage = React.lazy(
+  () => import("./page/Search/SearchWithKeywordPage")
+);
+const PlayListlPage = React.lazy(() => import("./page/PlayList/PlayListlPage"));
+const PlayListDetailPage = React.lazy(
+  () => import("./page/PlayList/PlayListDetailPage")
+);
+
+/*
+0. 사이드바
+1. 홈 화면
+2. search 화면
+3. search 결과 화면
+4. playlist 상세 화면
+5. (모바일) playlist 화면
+*/
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="search" element={<SearchPage />} />
+          <Route path="search/:keyword" element={<SearchWithKeywordPage />} />
+          <Route path="/playlist" element={<PlayListlPage />} />
+          <Route path="playlist/:id" element={<PlayListDetailPage />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 
