@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
 import React, { Suspense } from "react";
+import LoadingBar from "./component/LoadingBar";
 
 const AppLayout = React.lazy(() => import("./component/AppLayout"));
 const HomePage = React.lazy(() => import("./page/Home/HomePage"));
@@ -24,7 +25,7 @@ const PlayListDetailPage = React.lazy(
 
 function App() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingBar />}>
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
