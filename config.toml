@@ -1,0 +1,5 @@
+base_url = "hhttps://spotify-deemo-dabin.netlify.app/"
+title = "spotify-deemo-dabin"
+
+[build]
+public = "dist"
