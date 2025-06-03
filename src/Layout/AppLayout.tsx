@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 import NavComponent from "./component/NavComponent";
 import LibraryHead from "./component/LibraryHead";
 import Library from "./component/Library";
-import Topbar from "./component/NavComponent copy";
+import Topbar from "./component/Topbar";
 
 const AppLayout = () => {
   return (
@@ -68,6 +68,6 @@ const ContentBox = styled("div")<{ flex?: number }>`
 const MainContent = styled("div")`
   flex: 3;
   padding: 1rem;
-  background-color: #121212;
+  background: linear-gradient(to bottom, #252525, #121212 30%);
   border-radius: 8px;
 `;
