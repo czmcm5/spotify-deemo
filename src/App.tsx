@@ -1,9 +1,8 @@
 import { Route, Routes } from "react-router";
-import "./App.css";
 import React, { Suspense } from "react";
-import LoadingBar from "./component/LoadingBar";
+import LoadingBar from "./style/LoadingBar";
 
-const AppLayout = React.lazy(() => import("./component/AppLayout"));
+const AppLayout = React.lazy(() => import("./Layout/AppLayout"));
 const HomePage = React.lazy(() => import("./page/Home/HomePage"));
 const SearchPage = React.lazy(() => import("./page/Search/SearchPage"));
 const SearchWithKeywordPage = React.lazy(
