@@ -79,6 +79,8 @@ module.exports = (env, argv) => {
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "src", "index.html"),
+        hash: true,
+        favicon: "./src/image/favicon.ico",
       }),
       new Dotenv({
         allowEmptyValues: true,

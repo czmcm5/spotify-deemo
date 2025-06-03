@@ -28,26 +28,27 @@ const NavComponent = () => {
 
 export default NavComponent;
 
-const Container = styled("div")({
-  width: "100%",
-  marginBottom: "8px",
-  padding: "1.8rem",
-  color: "white",
-  backgroundColor: "#121212",
-  borderRadius: "8px",
-});
+const Container = styled("div")`
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 1.8rem;
+  color: white;
+  background-color: #121212;
+  border-radius: 8px;
+`;
 
-const StyledNavLink = styled(NavLink)({
-  textDecoration: "none",
-  display: "flex",
-  alignItems: "center",
-  gap: "20px",
-  color: "#bbbbbb",
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #bbbbbb;
 
-  "&.home": {
-    marginBottom: "0.7rem",
-  },
-  "&:hover, &.active": {
-    color: "white",
-  },
-});
+  &.home {
+    margin-bottom: 0.7rem;
+  }
+  &:hover,
+  &.active {
+    color: white;
+  }
+`;

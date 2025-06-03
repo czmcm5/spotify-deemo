@@ -17,15 +17,15 @@ const EmptyPlayList = () => {
 
 export default EmptyPlayList;
 
-const EmptyPlaylistCard = styled("div")({
-  padding: "1.5rem",
-  marginTop: "0.5rem",
-  color: "white",
-  backgroundColor: "#1a1a1a",
-  borderRadius: 8,
-});
+const EmptyPlaylistCard = styled("div")`
+  padding: 1.5rem;
+  margin-top: 0.5rem;
+  color: white;
+  background-color: #1a1a1a;
+  border-radius: 8;
+`;
 
-const CreateBtn = styled(Button)({
-  marginTop: "1rem",
-  fontWeight: 700,
-});
+const CreateBtn = styled(Button)`
+  margin-top: 1rem;
+  font-weight: 700;
+`;

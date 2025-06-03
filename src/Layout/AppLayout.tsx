@@ -3,58 +3,71 @@ import { Outlet } from "react-router";
 import NavComponent from "./component/NavComponent";
 import LibraryHead from "./component/LibraryHead";
 import Library from "./component/Library";
+import Topbar from "./component/NavComponent copy";
 
 const AppLayout = () => {
   return (
     <Layout>
-      <SiderBar>
-        <NavComponent />
+      <Topbar />
 
-        <ContentBox flex={1}>
-          <LibraryHead />
-          <Library />
-        </ContentBox>
-      </SiderBar>
+      <PageContainer>
+        <SiderBar>
+          <NavComponent />
 
-      <MainContent>
-        <Outlet />
-      </MainContent>
+          <ContentBox flex={1}>
+            <LibraryHead />
+            <Library />
+          </ContentBox>
+        </SiderBar>
+
+        <MainContent>
+          <Outlet />
+        </MainContent>
+      </PageContainer>
     </Layout>
   );
 };
 export default AppLayout;
 
-const ContentBox = styled("div")(({ flex }: { flex?: number }) => ({
-  flex: flex || "initial",
-  width: "100%",
-  padding: "1.5rem",
-  color: "white",
-  backgroundColor: "#121212",
-  borderRadius: 8,
-}));
+const Layout = styled("div")`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding: 8px;
+`;
 
-const Layout = styled("div")({
-  display: "flex",
-  width: "100%",
-  height: "100vh",
-  padding: "8px",
-});
+const PageContainer = styled("div")`
+  display: flex;
+  flex: 1;
+`;
 
-const SiderBar = styled("div")(({ theme }) => ({
-  flex: 1,
-  display: "flex",
-  minWidth: "16rem",
-  flexDirection: "column",
-  height: "100%",
-  marginRight: "8px",
-  [theme.breakpoints.down("sm")]: {
-    display: "none",
-  },
-}));
+const SiderBar = styled("div")<{ flex?: number }>`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 16rem;
+  max-width: 26rem;
+  height: 100%;
+  margin-right: 8px;
 
-const MainContent = styled("div")({
-  flex: 3.5,
-  padding: "1rem",
-  backgroundColor: "#121212",
-  borderRadius: "8px",
-});
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    display: none;
+  }
+`;
+
+const ContentBox = styled("div")<{ flex?: number }>`
+  flex: ${({ flex }) => flex || "initial"};
+  width: 100%;
+  padding: 1.5rem;
+  color: white;
+  background-color: #121212;
+  border-radius: 8;
+`;
+
+const MainContent = styled("div")`
+  flex: 3;
+  padding: 1rem;
+  background-color: #121212;
+  border-radius: 8px;
+`;
