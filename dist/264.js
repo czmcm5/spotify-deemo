@@ -1,2 +1,2 @@
 "use strict";(self.webpackChunkspotify_deemo=self.webpackChunkspotify_deemo||[]).push([[264],{7264:(e,s,t)=>{t.r(s),t.d(s,{default:()=>i});var a=t(4848);const i=()=>(0,a.jsx)("div",{children:"PlayListDetailPage"})}}]);
-//# sourceMappingURL=264.js.map?ver=eea2d01736a2ee458996
+//# sourceMappingURL=264.js.map?ver=0c037ca8ef797da318a9
