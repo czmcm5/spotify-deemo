@@ -11,30 +11,30 @@ const LoadingBar = () => {
 };
 export default LoadingBar;
 
-const Background = styled("div")({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100vh",
-});
+const Background = styled("div")`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 
-const Loding = styled("div")({
-  height: "3rem",
-  color: "#858585",
+const Loding = styled("div")`
+  height: 3rem;
+  color: #858585;
 
-  "& div.loading": {
-    width: "30px",
-    height: "30px",
-    boxSizing: "border-box",
-    border: "3px solid rgba(0, 0, 0, 0.3)",
-    borderTopColor: "#000000",
-    borderRadius: "100%",
-    animation: "spin 1s ease-in-out infinite",
-  },
+  & div.loading {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #25c56a54;
+    border-top-color: #25c56a;
+    border-radius: 100%;
 
-  "@keyframes spin": {
-    "100%": {
-      transform: "rotate(360deg)",
-    },
-  },
-});
+    animation: spin 1s ease-in-out infinite;
+  }
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
