@@ -1,23 +1,23 @@
-import { styled, Typography } from "@mui/material";
+import { Button, styled, Typography } from "@mui/material";
 
 const EmptyPlayList = () => {
   return (
-    <CreactPlaylistBox>
+    <EmptyPlaylistCard>
       <Typography variant="h2" fontWeight={700}>
         Create your first playlist
       </Typography>
       <div>It's easy, we'll help you</div>
 
-      <CreateBtn>
-        <Typography fontWeight={700}>Create playlist</Typography>
+      <CreateBtn variant="contained" color="secondary">
+        Create playlist
       </CreateBtn>
-    </CreactPlaylistBox>
+    </EmptyPlaylistCard>
   );
 };
 
 export default EmptyPlayList;
 
-const CreactPlaylistBox = styled("div")({
+const EmptyPlaylistCard = styled("div")({
   padding: "1.5rem",
   marginTop: "0.5rem",
   color: "white",
@@ -25,16 +25,7 @@ const CreactPlaylistBox = styled("div")({
   borderRadius: 8,
 });
 
-const CreateBtn = styled("button")({
-  padding: "0.5rem 1rem",
+const CreateBtn = styled(Button)({
   marginTop: "1rem",
-  border: 0,
-  outline: 0,
-  borderRadius: 50,
-  cursor: "pointer",
-
-  transition: "background-color 0.3s ease",
-  "&:hover": {
-    backgroundColor: "#bcbcbc",
-  },
+  fontWeight: 700,
 });

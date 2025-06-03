@@ -4,7 +4,7 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#1ed760",
+      main: "#1ed760", // Spotify green
     },
     secondary: {
       main: "#ffffff",

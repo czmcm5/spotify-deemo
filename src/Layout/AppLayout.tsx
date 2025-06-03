@@ -1,14 +1,19 @@
 import { styled } from "@mui/material";
 import { Outlet } from "react-router";
 import NavComponent from "./component/NavComponent";
-import LibrayComponent from "./component/LibrayComponent";
+import LibraryHead from "./component/LibraryHead";
+import Library from "./component/Library";
 
 const AppLayout = () => {
   return (
     <Layout>
       <SiderBar>
         <NavComponent />
-        <LibrayComponent />
+
+        <ContentBox flex={1}>
+          <LibraryHead />
+          <Library />
+        </ContentBox>
       </SiderBar>
 
       <MainContent>
@@ -18,6 +23,15 @@ const AppLayout = () => {
   );
 };
 export default AppLayout;
+
+const ContentBox = styled("div")(({ flex }: { flex?: number }) => ({
+  flex: flex || "initial",
+  width: "100%",
+  padding: "1.5rem",
+  color: "white",
+  backgroundColor: "#121212",
+  borderRadius: 8,
+}));
 
 const Layout = styled("div")({
   display: "flex",
