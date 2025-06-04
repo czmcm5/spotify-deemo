@@ -1,2 +1,2 @@
 "use strict";(self.webpackChunkspotify_deemo=self.webpackChunkspotify_deemo||[]).push([[572],{2572:(e,s,d)=>{d.r(s),d.d(s,{default:()=>a});var t=d(4848);const a=()=>(0,t.jsx)("div",{children:"SearchWithKeywordPage"})}}]);
-//# sourceMappingURL=572.js.map?ver=67008b56463005b8e00c
+//# sourceMappingURL=572.js.map?ver=b6971d63c1e1e2808144

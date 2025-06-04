@@ -36,12 +36,10 @@ const Layout = styled("div")`
   height: 100vh;
   padding: 8px;
 `;
-
 const PageContainer = styled("div")`
   display: flex;
   flex: 1;
 `;
-
 const SiderBar = styled("div")<{ flex?: number }>`
   flex: 1;
   display: flex;
@@ -55,7 +53,6 @@ const SiderBar = styled("div")<{ flex?: number }>`
     display: none;
   }
 `;
-
 const ContentBox = styled("div")<{ flex?: number }>`
   flex: ${({ flex }) => flex || "initial"};
   width: 100%;
@@ -64,7 +61,6 @@ const ContentBox = styled("div")<{ flex?: number }>`
   background-color: #121212;
   border-radius: 8;
 `;
-
 const MainContent = styled("div")`
   flex: 3;
   padding: 1rem;

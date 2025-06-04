@@ -36,6 +36,7 @@ const theme = createTheme({
     },
     subtitle1: {
       fontSize: "0.6875rem",
+      color: "#898989",
     },
   },
   components: {
