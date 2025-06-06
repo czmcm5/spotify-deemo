@@ -16,7 +16,7 @@ const NowReleases = () => {
   return (
     <div>
       <Typography variant="h1" paddingTop={2}>
-        New NowReleased Albums
+        최근 출시 앨범
       </Typography>
 
       {data && data.albums.items.length > 0 && (

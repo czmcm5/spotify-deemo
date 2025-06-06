@@ -23,7 +23,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Roboto, Arial, sans-serif",
+    fontFamily: "Pretendard-Regular, Roboto, Arial, sans-serif",
     h1: {
       fontWeight: 700,
       fontSize: "24px",

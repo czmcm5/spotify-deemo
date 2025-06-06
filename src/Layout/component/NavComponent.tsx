@@ -16,14 +16,14 @@ const NavComponent = () => {
       >
         <img src={HomeIcon} alt="홈 아이콘" />
         <Typography variant="h2" fontWeight={700}>
-          Home
+          메인 홈
         </Typography>
       </StyledNavLink>
 
       <StyledNavLink to="/search" className={isCurrentPath("/search")}>
         <img src={SearchIcon} alt="검색 아이콘" />
         <Typography variant="h2" fontWeight={700}>
-          Search
+          검색하기
         </Typography>
       </StyledNavLink>
     </Container>

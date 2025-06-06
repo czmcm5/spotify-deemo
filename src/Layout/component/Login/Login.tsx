@@ -9,7 +9,7 @@ const LoginBtn = () => {
 
   return (
     <Login variant="contained" color="secondary" onClick={getSpotifyLogin}>
-      Log in
+      로그인하기
     </Login>
   );
 };

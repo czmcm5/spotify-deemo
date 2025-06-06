@@ -8,7 +8,7 @@ const LibraryHead = () => {
       <Box display="flex">
         <Icon src={BookmarkIcon} alt="북마크 아이콘" />
         <Typography variant="h2" fontWeight={700}>
-          Your Library
+          내 라이브러리
         </Typography>
       </Box>
 
