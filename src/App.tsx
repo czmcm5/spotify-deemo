@@ -32,6 +32,7 @@ function App() {
 
   useEffect(() => {
     if (access_token) {
+      if (code) window.location.href = "/";
       return;
     }
     // ac token이 없을 때 만
