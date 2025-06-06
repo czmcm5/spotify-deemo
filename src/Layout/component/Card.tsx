@@ -23,7 +23,6 @@ const Card = ({ img, name, artist = "알수없음" }: CardProps) => {
       </PicBox>
 
       <Title>{name}</Title>
-      <Title>{isfocuse}</Title>
       <Typography variant="subtitle1">{artist}</Typography>
     </CardBox>
   );

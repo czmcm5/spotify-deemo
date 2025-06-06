@@ -1,16 +1,17 @@
-import BookmarkIcon from "@mui/icons-material/Bookmark";
 import { Box, Button, styled, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import BookmarkIcon from "../../image/BookmarkIcon.png";
 
 const LibraryHead = () => {
   return (
     <Head>
       <Box display="flex">
-        <BookmarkIcon sx={{ marginRight: "20px" }} />
+        <Icon src={BookmarkIcon} alt="북마크 아이콘" />
         <Typography variant="h2" fontWeight={700}>
           Your Library
         </Typography>
       </Box>
+
       <Button>
         <AddIcon />
       </Button>
@@ -24,4 +25,8 @@ const Head = styled("div")`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+const Icon = styled("img")`
+  width: 25px;
+  margin-right: 20px;
 `;

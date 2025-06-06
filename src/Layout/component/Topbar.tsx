@@ -1,14 +1,17 @@
-import { Button, styled } from "@mui/material";
+import { styled } from "@mui/material";
 import FackLogo from "../../image/fake_Logo.png";
+import Login from "./Login/Login";
 
 const Topbar = () => {
   return (
     <Container>
-      <Logo src={FackLogo} alt="fack_logo" />
+      <Logo
+        src={FackLogo}
+        alt="fack_logo"
+        onClick={() => (window.location.href = "/")}
+      />
 
-      <LoginBtn variant="contained" color="secondary">
-        Log in
-      </LoginBtn>
+      <Login />
     </Container>
   );
 };
@@ -29,11 +32,5 @@ const Container = styled("div")`
 
 const Logo = styled("img")`
   width: 2.2rem;
-`;
-
-const LoginBtn = styled(Button)`
-  width: 7rem;
-  height: 2.6rem;
-  font-size: 16px;
-  font-weight: 700;
+  cursor: pointer;
 `;

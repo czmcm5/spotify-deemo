@@ -1,7 +1,7 @@
-import HomeIcon from "@mui/icons-material/Home";
-import SearchIcon from "@mui/icons-material/Search";
 import { styled, Typography } from "@mui/material";
 import { NavLink, useLocation } from "react-router";
+import HomeIcon from "../../image/HomeIcon.png";
+import SearchIcon from "../../image/SearchIcon.png";
 
 const NavComponent = () => {
   const { pathname } = useLocation();
@@ -9,15 +9,19 @@ const NavComponent = () => {
 
   return (
     <Container>
-      <StyledNavLink to="/" className={`home ${isCurrentPath("/")}`}>
-        <HomeIcon />
+      <StyledNavLink
+        to="/"
+        className={`${isCurrentPath("/")}`}
+        sx={{ margiBnottom: "0.7rem" }}
+      >
+        <img src={HomeIcon} alt="홈 아이콘" />
         <Typography variant="h2" fontWeight={700}>
           Home
         </Typography>
       </StyledNavLink>
 
       <StyledNavLink to="/search" className={isCurrentPath("/search")}>
-        <SearchIcon />
+        <img src={SearchIcon} alt="검색 아이콘" />
         <Typography variant="h2" fontWeight={700}>
           Search
         </Typography>
@@ -42,13 +46,16 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 20px;
-  color: #bbbbbb;
-
-  &.home {
-    margin-bottom: 0.7rem;
+  color: #adadad;
+  img {
+    opacity: 0.5;
   }
+
   &:hover,
   &.active {
     color: white;
+    img {
+      opacity: 1;
+    }
   }
 `;
