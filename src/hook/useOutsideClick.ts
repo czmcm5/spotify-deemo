@@ -11,9 +11,9 @@ const useOutsideClick = (f: () => void) => {
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", click);
+    document.addEventListener("mouseup", click);
     return () => {
-      document.removeEventListener("mousedown", click);
+      document.removeEventListener("mouseup", click);
     };
   }, [f]);
 
