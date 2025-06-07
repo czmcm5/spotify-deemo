@@ -9,4 +9,10 @@ const api: AxiosInstance = axios.create({
   },
 });
 
+api.interceptors.request.use((req) => {
+  req.headers.Authorization = `Bearer ${localStorage.getItem("access_token")}`;
+
+  return req;
+});
+
 export default api;

@@ -27,19 +27,13 @@ function App() {
   const urlParams = new URLSearchParams(window.location.search);
   let code = urlParams.get("code");
   let codeVerifier = localStorage.getItem("code_verifier");
-  let access_token = localStorage.getItem("access_token");
   const { mutate: exchangeToken } = useExchangeToken();
 
   useEffect(() => {
-    if (access_token) {
-      if (code) window.location.href = "/";
-      return;
-    }
-    // ac token이 없을 때 만
     if (code && codeVerifier) {
       exchangeToken({ code, codeVerifier });
     }
-  }, [code, codeVerifier, exchangeToken, access_token]);
+  }, [code, codeVerifier, exchangeToken]);
 
   return (
     <Suspense fallback={<LoadingBar />}>
