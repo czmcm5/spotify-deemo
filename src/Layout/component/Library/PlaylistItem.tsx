@@ -1,11 +1,9 @@
 import { styled, Typography } from "@mui/material";
 import { SimplifiedPlaylist } from "../../../models/playlist";
 
-const PlaylistItem = ({ item }: { item: SimplifiedPlaylist }) => {
-  return (
-    <PlayListBox>
-      <PicBox>{item.images && <img src={item.images[0]?.url} />}</PicBox>
-
+const Playlist = ({ list }: { list: SimplifiedPlaylist[] }) => {
+  return list.map((item, idx) => (
+    <PlayListBox key={idx}>
       <div>
         <Typography fontSize={16}>{item.name}</Typography>
         <Typography color="#B3B3B3">
@@ -13,10 +11,10 @@ const PlaylistItem = ({ item }: { item: SimplifiedPlaylist }) => {
         </Typography>
       </div>
     </PlayListBox>
-  );
+  ));
 };
 
-export default PlaylistItem;
+export default Playlist;
 
 const PlayListBox = styled("div")`
   display: flex;
