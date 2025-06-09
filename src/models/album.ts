@@ -1,16 +1,9 @@
+import { ApiRes } from "./apiRes";
 import { ArtistsType } from "./artist";
 import { ExternalUrls, Images, Restrictions } from "./commonType";
 
 export interface GetNewReleasesRes {
-  albums: {
-    href: string;
-    limit: number;
-    next: string | null;
-    offset: number;
-    previous: string | null;
-    total: number;
-    items: AlbumItemType[];
-  };
+  albums: ApiRes<AlbumItemType>;
 }
 
 export interface AlbumItemType {

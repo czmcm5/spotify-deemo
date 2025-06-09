@@ -1,1 +1,0 @@
-{"version":3,"file":"475.js?ver=2005164c19f8d73c9dfa","mappings":"yJAAA,MAGA,EAHmBA,KACVC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,c","sources":["webpack://spotify-deemo/./src/page/Search/SearchPage.tsx"],"sourcesContent":["const SearchPage = () => {\n  return <div>SearchPage</div>;\n};\nexport default SearchPage;\n"],"names":["SearchPage","_jsx","children"],"sourceRoot":""}
