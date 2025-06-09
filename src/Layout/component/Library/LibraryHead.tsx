@@ -1,6 +1,6 @@
 import { Box, Button, styled, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import BookmarkIcon from "../../image/BookmarkIcon.png";
+import BookmarkIcon from "../../../image/BookmarkIcon.png";
 
 const LibraryHead = () => {
   return (
@@ -25,6 +25,7 @@ const Head = styled("div")`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 1rem;
 `;
 const Icon = styled("img")`
   width: 25px;
