@@ -4,6 +4,7 @@ import { SimplifiedPlaylist } from "../../../models/playlist";
 const Playlist = ({ list }: { list: SimplifiedPlaylist[] }) => {
   return list.map((item, idx) => (
     <PlayListBox key={idx}>
+      <PicBox>{item.images && <img src={item.images[0].url} />}</PicBox>
       <div>
         <Typography fontSize={16}>{item.name}</Typography>
         <Typography color="#B3B3B3">
