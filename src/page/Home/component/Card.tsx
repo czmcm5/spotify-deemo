@@ -1,6 +1,6 @@
 import { styled, Typography } from "@mui/material";
 import { useState } from "react";
-import { AlbumItemType } from "../../models/album";
+import { AlbumItemType } from "../../../models/album";
 import PlayBtn from "./PlayBtn";
 
 interface CardProps {

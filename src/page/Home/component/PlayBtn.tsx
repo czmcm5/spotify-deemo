@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import PlayArrow from "../../image/playArrow.png";
+import PlayArrow from "../../../image/playArrow.png";
 
 const PlayBtn = ({ isfocuse }: { isfocuse: "show" | "none" }) => {
   return (

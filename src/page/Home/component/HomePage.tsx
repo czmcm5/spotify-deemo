@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import useGetNewReleases from "../../../hook/useGetNewReleases";
-import CardList from "../../../Layout/component/Card";
+import CardList from "./Card";
 import ErrorMessage from "../../../Layout/ErrorMessage";
 import LoadingBar from "../../../style/LoadingBar";
 
