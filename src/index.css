@@ -8,10 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  overflow: hidden;
 }
 img {
   -webkit-user-drag: none;

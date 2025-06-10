@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router";
 import HomeIcon from "../../image/HomeIcon.png";
 import SearchIcon from "../../image/SearchIcon.png";
 
-const NavComponent = () => {
+const NavBox = () => {
   const { pathname } = useLocation();
   const isCurrentPath = (menu: string) => (pathname === menu ? "active" : "");
 
@@ -30,7 +30,7 @@ const NavComponent = () => {
   );
 };
 
-export default NavComponent;
+export default NavBox;
 
 const Container = styled("div")`
   width: 100%;

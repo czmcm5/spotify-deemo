@@ -42,7 +42,7 @@ const Library = () => {
   }
 
   return (
-    <>
+    <ListBox>
       {data.pages.map((page, idx) => (
         <PlaylistItem key={idx} list={page.items} />
       ))}
@@ -58,12 +58,25 @@ const Library = () => {
       </Loding>
 
       {!isFetchingNextPage && <Observer id="observer" />}
-    </>
+    </ListBox>
   );
 };
 
 export default Library;
 
+const ListBox = styled("div")`
+  height: 100%;
+  padding-bottom: 7rem;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #636363;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+`;
 const Loding = styled("div")`
   display: flex;
   align-items: center;

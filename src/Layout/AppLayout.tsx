@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 import { Outlet } from "react-router";
-import NavComponent from "./component/NavComponent";
+import NavBox from "./component/NavBox";
 import LibraryHead from "./component/Library/LibraryHead";
 import Library from "./component/Library/Library";
 import Topbar from "./component/Topbar";
@@ -12,12 +12,12 @@ const AppLayout = () => {
 
       <PageContainer>
         <SiderBar>
-          <NavComponent />
+          <NavBox />
 
-          <ContentBox>
+          <LibraryBox>
             <LibraryHead />
             <Library />
-          </ContentBox>
+          </LibraryBox>
         </SiderBar>
 
         <MainContent>
@@ -39,6 +39,7 @@ const Layout = styled("div")`
 const PageContainer = styled("div")`
   display: flex;
   flex: 1;
+  height: 100%;
 `;
 const SiderBar = styled("div")<{ flex?: number }>`
   flex: 1;
@@ -53,13 +54,15 @@ const SiderBar = styled("div")<{ flex?: number }>`
     display: none;
   }
 `;
-const ContentBox = styled("div")<{ flex?: number }>`
+const LibraryBox = styled("div")<{ flex?: number }>`
   flex: 1;
   width: 100%;
+  height: 100%;
   padding: 0.5rem;
   color: white;
   background-color: #121212;
-  border-radius: 8;
+  border-radius: 8px;
+  overflow: hidden;
 `;
 const MainContent = styled("div")`
   flex: 3;
