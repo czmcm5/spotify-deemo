@@ -9,7 +9,6 @@ const useGetCurrentUserPlaylists = ({
   return useInfiniteQuery({
     queryKey: ["current-user-playlists"],
     queryFn: ({ pageParam }) => {
-      console.log("queryFn 실행");
       return getCurrentUserPlaylists({ limit, offset: pageParam });
     },
     enabled,

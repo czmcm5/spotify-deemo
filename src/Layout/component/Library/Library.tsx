@@ -4,6 +4,7 @@ import useGetProfile from "../../../hook/useGetProfile";
 import useInfiniteScroll from "../../../hook/useInfiniteScroll";
 import LoadingBar from "../../../style/LoadingBar";
 import ErrorMessage from "../../ErrorMessage";
+import LoadState from "../LodingBox";
 import EmptyPlayList from "./EmptyPlayList";
 import PlaylistItem from "./PlaylistItem";
 
@@ -40,23 +41,13 @@ const Library = () => {
   if (!data?.pages || data.pages[0].total === 0) {
     return <EmptyPlayList />;
   }
-
   return (
     <ListBox>
       {data.pages.map((page, idx) => (
         <PlaylistItem key={idx} list={page.items} />
       ))}
 
-      <Loding>
-        {isFetchingNextPage ? (
-          <div className="loading" />
-        ) : !hasNextPage ? (
-          <div>마지막 입니다.</div>
-        ) : (
-          <></>
-        )}
-      </Loding>
-
+      <LoadState isLoading={isFetchingNextPage} isFinished={!hasNextPage} />
       {!isFetchingNextPage && <Observer id="observer" />}
     </ListBox>
   );
@@ -77,30 +68,7 @@ const ListBox = styled("div")`
     cursor: pointer;
   }
 `;
-const Loding = styled("div")`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 3rem;
-  font-size: 14px;
-  color: #858585;
 
-  div.loading {
-    box-sizing: border;
-    width: 30px;
-    height: 30px;
-    border: 4px solid #25c56a54;
-    border-top-color: #25c56a;
-    border-radius: 100%;
-
-    animation: spin 1s ease-in-out infinite;
-  }
-  @keyframes spin {
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-`;
 const Observer = styled("div")`
   height: 1rem;
   /* background-color: yellow; */

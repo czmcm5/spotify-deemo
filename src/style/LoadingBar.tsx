@@ -3,9 +3,9 @@ import styled from "styled-components";
 const LoadingBar = () => {
   return (
     <Background>
-      <Loding>
-        <div className="loading" />
-      </Loding>
+      <Box>
+        <LoadingSpinner width={40} height={40} />
+      </Box>
     </Background>
   );
 };
@@ -17,21 +17,19 @@ const Background = styled("div")`
   align-items: center;
   height: 100vh;
 `;
-
-const Loding = styled("div")`
+const Box = styled("div")`
   height: 3rem;
   color: #858585;
+`;
+export const LoadingSpinner = styled("div")<{ width: number; height: number }>`
+  box-sizing: border-box;
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
+  border: 4px solid #25c56a54;
+  border-top-color: #25c56a;
+  border-radius: 100%;
+  animation: spin 1s ease-in-out infinite;
 
-  & div.loading {
-    box-sizing: border-box;
-    width: 40px;
-    height: 40px;
-    border: 4px solid #25c56a54;
-    border-top-color: #25c56a;
-    border-radius: 100%;
-
-    animation: spin 1s ease-in-out infinite;
-  }
   @keyframes spin {
     100% {
       transform: rotate(360deg);
