@@ -4,13 +4,15 @@ import { GetCurrentUserPlaylistReq } from "../models/playlist";
 
 const useGetCurrentUserPlaylists = ({
   limit,
-  offset,
-}: GetCurrentUserPlaylistReq) => {
+  enabled,
+}: GetCurrentUserPlaylistReq & { enabled: boolean }) => {
   return useInfiniteQuery({
     queryKey: ["current-user-playlists"],
     queryFn: ({ pageParam }) => {
+      console.log("queryFn 실행");
       return getCurrentUserPlaylists({ limit, offset: pageParam });
     },
+    enabled,
     initialPageParam: 0, // 시작 value
     getNextPageParam: (lastPage) => {
       // infinitQuery 핵심.

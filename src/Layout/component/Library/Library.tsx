@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import styled from "@mui/styled-engine-sc";
 import useGetCurrentUserPlaylists from "../../../hook/useGetCurrentUserPlaylists";
 import useGetProfile from "../../../hook/useGetProfile";
+import useInfiniteScroll from "../../../hook/useInfiniteScroll";
 import LoadingBar from "../../../style/LoadingBar";
 import ErrorMessage from "../../ErrorMessage";
 import EmptyPlayList from "./EmptyPlayList";
 import PlaylistItem from "./PlaylistItem";
-import styled from "@mui/styled-engine-sc";
-import useInfiniteScroll from "../../../hook/useInfiniteScroll";
 
 const Library = () => {
   const { data: user } = useGetProfile();
@@ -19,7 +18,7 @@ const Library = () => {
     isFetchingNextPage, // 다음페이지 가져오는 중인지? : boolean
   } = useGetCurrentUserPlaylists({
     limit: 10,
-    offset: 0,
+    enabled: !!user, // user가 있을 때만 실행
   });
 
   // 커스텀 무한 스크롤
@@ -41,6 +40,7 @@ const Library = () => {
   if (!data?.pages || data.pages[0].total === 0) {
     return <EmptyPlayList />;
   }
+
   return (
     <>
       {data.pages.map((page, idx) => (
