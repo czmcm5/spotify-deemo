@@ -43,9 +43,9 @@ const Library = () => {
   }
   return (
     <ListBox>
-      {data.pages.map((page, idx) => (
-        <PlaylistItem key={idx} list={page.items} />
-      ))}
+      {data.pages.map((page) =>
+        page.items.map((item, idx) => <PlaylistItem key={idx} item={item} />)
+      )}
 
       <LoadState isLoading={isFetchingNextPage} isFinished={!hasNextPage} />
       {!isFetchingNextPage && <Observer id="observer" />}
