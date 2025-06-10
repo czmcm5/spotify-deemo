@@ -47,10 +47,10 @@ const StyledNavLink = styled(NavLink)`
   align-items: center;
   gap: 20px;
   color: #adadad;
+
   img {
     opacity: 0.5;
   }
-
   &:hover,
   &.active {
     color: white;

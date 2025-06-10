@@ -1,5 +1,5 @@
 import styled from "@mui/styled-engine-sc";
-import { LoadingSpinner } from "../../style/LoadingBar";
+import { LoadingSpinner } from "./LoadingBar";
 
 const LoadState = ({
   isLoading,

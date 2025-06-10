@@ -4,11 +4,15 @@ import useGetProfile from "../../../hook/useGetProfile";
 import useInfiniteScroll from "../../../hook/useInfiniteScroll";
 import LoadingBar from "../../../style/LoadingBar";
 import ErrorMessage from "../../ErrorMessage";
-import LoadState from "../LodingBox";
+import LoadState from "../../../style/LodingBox";
 import EmptyPlayList from "./EmptyPlayList";
 import PlaylistItem from "./PlaylistItem";
+import { useNavigate, useParams } from "react-router";
 
 const Library = () => {
+  const Navigate = useNavigate();
+  const { id = "" } = useParams();
+
   const { data: user } = useGetProfile();
   const {
     data,
@@ -29,6 +33,8 @@ const Library = () => {
     onIntersect: fetchNextPage,
   });
 
+  const goPlaylistDetail = (id: string) => Navigate(`/playlist/${id}`);
+
   if (!user) {
     return <EmptyPlayList />;
   }
@@ -44,7 +50,14 @@ const Library = () => {
   return (
     <ListBox>
       {data.pages.map((page) =>
-        page.items.map((item, idx) => <PlaylistItem key={idx} item={item} />)
+        page.items.map((item, idx) => (
+          <PlaylistItem
+            key={idx}
+            item={item}
+            goPage={() => goPlaylistDetail(item.id || "")}
+            isSelect={id === item.id}
+          />
+        ))
       )}
 
       <LoadState isLoading={isFetchingNextPage} isFinished={!hasNextPage} />
@@ -68,7 +81,6 @@ const ListBox = styled("div")`
     cursor: pointer;
   }
 `;
-
 const Observer = styled("div")`
   height: 1rem;
   /* background-color: yellow; */

@@ -1,5 +1,5 @@
 import { styled, Typography } from "@mui/material";
-import { useState } from "react";
+import useFouces from "../../../hook/useFocuse";
 import { AlbumItemType } from "../../../models/album";
 import PlayBtn from "./PlayBtn";
 
@@ -10,16 +10,13 @@ interface CardProps {
 }
 
 const Card = ({ img, name, artist = "알수없음" }: CardProps) => {
-  const [isfocuse, setIsfocuse] = useState<"show" | "none">("none");
-
-  const onFocus = () => setIsfocuse("show");
-  const offFocus = () => setIsfocuse("none");
+  const focuse = useFouces();
 
   return (
-    <CardBox onMouseOver={onFocus} onMouseLeave={offFocus}>
+    <CardBox onMouseOver={focuse.on} onMouseLeave={focuse.off}>
       <PicBox>
         <img src={img} alt={name} className="Thumbnail" />
-        <PlayBtn isfocuse={isfocuse} />
+        <PlayBtn isfocuse={focuse.isfocuse} />
       </PicBox>
 
       <Title>{name}</Title>
