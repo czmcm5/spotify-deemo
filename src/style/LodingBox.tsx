@@ -12,7 +12,7 @@ const LoadState = ({
     <Loding>
       {isLoading ? (
         <LoadingSpinner width={30} height={30} />
-      ) : !isFinished ? (
+      ) : isFinished ? (
         <div>마지막 입니다.</div>
       ) : (
         <></>
@@ -30,4 +30,9 @@ const Loding = styled("div")`
   height: 3rem;
   font-size: 14px;
   color: #858585;
+`;
+
+export const Observer = styled("div")`
+  height: 1rem;
+  /* background-color: yellow; */
 `;

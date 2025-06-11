@@ -1,5 +1,4 @@
 import { ApiRes } from "./apiRes";
-import { ArtistsType } from "./artist";
 import { ExternalUrls, Images, Owener } from "./commonType";
 import { EpisodeObject, TrackObject } from "./tracks";
 
@@ -7,8 +6,6 @@ export interface GetCurrentUserPlaylistReq {
   limit?: number;
   offset?: number;
 }
-
-export type GetCurrentUserPlaylistRes = ApiRes<SimplifiedPlaylist>;
 
 export interface BasePlaylist {
   collaborative?: boolean;
@@ -31,6 +28,8 @@ export interface SimplifiedPlaylist extends BasePlaylist {
     total: number;
   };
 }
+
+export type GetCurrentUserPlaylistRes = ApiRes<SimplifiedPlaylist>;
 
 export interface Playlist extends BasePlaylist {
   tracks?: ApiRes<PlaylistTrack>;

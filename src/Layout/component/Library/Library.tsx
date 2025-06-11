@@ -4,7 +4,7 @@ import useGetProfile from "../../../hook/useGetProfile";
 import useInfiniteScroll from "../../../hook/useInfiniteScroll";
 import LoadingBar from "../../../style/LoadingBar";
 import ErrorMessage from "../../ErrorMessage";
-import LoadState from "../../../style/LodingBox";
+import LoadState, { Observer } from "../../../style/LodingBox";
 import EmptyPlayList from "./EmptyPlayList";
 import PlaylistItem from "./PlaylistItem";
 import { useNavigate, useParams } from "react-router";
@@ -81,8 +81,4 @@ const ListBox = styled("div")`
     border-radius: 10px;
     cursor: pointer;
   }
-`;
-const Observer = styled("div")`
-  height: 1rem;
-  /* background-color: yellow; */
 `;

@@ -4,7 +4,7 @@ import { SimplifiedPlaylist } from "./playlist";
 
 export interface TrackObject {
   album: SimplifiedPlaylist;
-  artists: ArtistsType;
+  artists: ArtistsType[];
   available_markets: string[];
   disc_number: number;
   duration_ms: number;

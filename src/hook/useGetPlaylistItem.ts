@@ -10,11 +10,12 @@ const useGetPlaylistItem = (params: GetPlaylistItemsReq) => {
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
-      if (!lastPage.next) return undefined;
-
-      const url = new URL(lastPage.next);
-      const nextOffset = url.searchParams.get("offset");
-      return nextOffset ? parseInt(nextOffset) : undefined;
+      if (lastPage.next) {
+        const url = new URL(lastPage.next);
+        const nextOffset = url.searchParams.get("offset");
+        return nextOffset ? parseInt(nextOffset) : undefined;
+      }
+      return undefined;
     },
   });
 };
