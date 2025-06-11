@@ -28,6 +28,7 @@ const Library = () => {
 
   // 커스텀 무한 스크롤
   useInfiniteScroll({
+    page: "library",
     isLoading: isFetchingNextPage,
     isFinished: !hasNextPage,
     onIntersect: fetchNextPage,
@@ -61,7 +62,7 @@ const Library = () => {
       )}
 
       <LoadState isLoading={isFetchingNextPage} isFinished={!hasNextPage} />
-      {!isFetchingNextPage && <Observer id="observer" />}
+      {!isFetchingNextPage && <Observer id="observer-library" />}
     </ListBox>
   );
 };

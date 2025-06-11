@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 
 const useInfiniteScroll = ({
+  page,
   isLoading,
   isFinished,
   onIntersect,
 }: {
+  page: string;
   isLoading: boolean;
   isFinished: boolean;
   onIntersect: () => void;
@@ -22,7 +24,7 @@ const useInfiniteScroll = ({
       { threshold: 0 }
     );
 
-    const observerTarget = document.getElementById("observer");
+    const observerTarget = document.getElementById(`observer-${page}`);
     if (observerTarget) observer.observe(observerTarget);
 
     return () => {

@@ -66,6 +66,7 @@ const LibraryBox = styled("div")<{ flex?: number }>`
 `;
 const MainContent = styled("div")`
   flex: 3;
+  height: 100%;
   background: linear-gradient(to bottom, #252525, #121212 30%);
   border-radius: 8px;
   overflow: hidden;

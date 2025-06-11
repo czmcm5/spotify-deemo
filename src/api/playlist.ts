@@ -1,6 +1,8 @@
 import {
   GetCurrentUserPlaylistReq,
   GetCurrentUserPlaylistRes,
+  GetPlaylistItemsReq,
+  GetPlaylistItemsRes,
   GetPlaylistReq,
   Playlist,
 } from "../models/playlist";
@@ -31,5 +33,19 @@ export const getPlaylist = async (
     return res.data;
   } catch (error) {
     throw new Error("fail getPlaylist");
+  }
+};
+
+export const getPlaylistItems = async (
+  params: GetPlaylistItemsReq
+): Promise<GetPlaylistItemsRes> => {
+  try {
+    const res = await api.get(`/playlists/${params.playlist_id}/tracks`, {
+      params,
+    });
+
+    return res.data;
+  } catch (err) {
+    throw new Error("fail getPlaylistItems");
   }
 };
