@@ -1,4 +1,6 @@
+import { isAxiosError } from "axios";
 import {
+  CreatePlaylist,
   GetCurrentUserPlaylistReq,
   GetCurrentUserPlaylistRes,
   GetPlaylistItemsReq,
@@ -31,7 +33,9 @@ export const getPlaylist = async (
       params,
     });
     return res.data;
-  } catch (error) {
+  } catch (err) {
+    if (isAxiosError(err) && err.response?.status === 401)
+      throw new Error("retry"); // 로그인 다시
     throw new Error("fail getPlaylist");
   }
 };
@@ -47,5 +51,23 @@ export const getPlaylistItems = async (
     return res.data;
   } catch (err) {
     throw new Error("fail getPlaylistItems");
+  }
+};
+
+export const createPlaylist = async (
+  user_id: string,
+  params: CreatePlaylist
+): Promise<Playlist> => {
+  try {
+    const { name, collaborative, description } = params;
+    const res = await api.post(`/users/${user_id}/playlists`, {
+      name,
+      public: params.public,
+      collaborative,
+      description,
+    });
+    return res.data;
+  } catch (err) {
+    throw new Error("fail createPlaylist");
   }
 };

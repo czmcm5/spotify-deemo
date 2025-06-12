@@ -62,3 +62,10 @@ export interface GetPlaylistItemsReq extends GetPlaylistReq {
 }
 
 export type GetPlaylistItemsRes = ApiRes<PlaylistTrack>;
+
+export interface CreatePlaylist {
+  name: string;
+  public?: boolean;
+  collaborative?: boolean;
+  description?: string;
+}
