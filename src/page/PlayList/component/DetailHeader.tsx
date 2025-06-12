@@ -40,10 +40,12 @@ const DetailHeader = ({
 export default DetailHeader;
 
 const PlayListHeader = styled("div")`
+  flex-shrink: 0; // 공간이 부족할 때 box가 줄어들지않음
   display: flex;
   align-items: center;
   justify-items: flex-start;
-  padding: 5rem 2rem 1.5rem 2rem;
+  height: 22rem;
+  padding: 4rem 2rem 0rem 2rem;
   background: linear-gradient(to bottom, #424242, #222222 90%);
 `;
 const PicBox = styled("div")`

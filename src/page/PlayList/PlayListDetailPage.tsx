@@ -36,17 +36,8 @@ const PlayListDetailPage = () => {
 export default PlayListDetailPage;
 
 const PageBox = styled("div")`
-  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  overflow: auto;
-  overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #636363;
-    border-radius: 10px;
-    cursor: pointer;
-  }
+  /* padding-bottom: 5rem; */
 `;

@@ -1,8 +1,10 @@
 import {
+  Paper,
   styled,
   Table,
   TableBody,
   TableCell,
+  TableContainer,
   TableHead,
   TableRow,
   Typography,
@@ -49,12 +51,12 @@ const DetailList = ({ id, isShow }: { id: string; isShow: boolean }) => {
     return <ErrorMessage errMessage={error.message} />;
   }
   return (
-    <ItemsListBox>
+    <>
       {isShow ? (
         <SearchPage />
       ) : (
-        <>
-          <Table sx={{ borderCollapse: "collapse" }}>
+        <Container>
+          <Table stickyHeader sx={{ borderCollapse: "collapse" }}>
             <TableHead>
               <TableRow>
                 <TableCell>#</TableCell>
@@ -80,16 +82,28 @@ const DetailList = ({ id, isShow }: { id: string; isShow: boolean }) => {
 
           <LoadState isLoading={isFetchingNextPage} isFinished={!hasNextPage} />
           {!isFetchingNextPage && <Observer id="observer-playlistItems" />}
-        </>
+        </Container>
       )}
-    </ItemsListBox>
+    </>
   );
 };
 
 export default DetailList;
 
-const ItemsListBox = styled("div")`
-  margin: 0 1rem;
+const Container = styled(TableContainer)`
+  flex-grow: 1;
+  padding-bottom: 5rem;
+  overflow: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+const Cell = styled(TableCell)`
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    display: none;
+  }
 `;
 const SearchBox = styled("div")`
   margin: 2rem 0;
@@ -103,10 +117,5 @@ const SearchBox = styled("div")`
     background-color: #333333;
     border: 0;
     outline: 0;
-  }
-`;
-const Cell = styled(TableCell)`
-  ${({ theme }) => theme.breakpoints.down("md")} {
-    display: none;
   }
 `;
