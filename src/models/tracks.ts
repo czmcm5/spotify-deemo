@@ -49,3 +49,51 @@ export interface EpisodeObject {
   type: "episode";
   uri: string;
 }
+
+export interface SimplifiedShow {
+  available_markets: string[];
+  copyrights: {
+    text: string;
+    type: string;
+  }[];
+  description: string;
+  html_description: string;
+  duration_ms: number;
+  explicit: boolean;
+  external_urls?: ExternalUrls;
+  href: string;
+  id: string;
+  imgaes: Images[];
+  is_externally_hosted: boolean;
+  is_playable: string;
+  languages: string;
+  name: string;
+  publisher: string;
+  type: "show";
+  uri: string;
+}
+
+export interface SimplifedAudiobook {
+  authors: string;
+  available_markets: string[];
+  copyrights: {
+    text: string;
+    type: string;
+  }[];
+  description: string;
+  html_description: string;
+  edition: string;
+  explicit: boolean;
+  external_urls?: ExternalUrls;
+  href: string;
+  id: string;
+  imgaes: Images[];
+  languages: string;
+  media_type: string;
+  name: string;
+  narrators: { name: string };
+  publisher: string;
+  type: "audiobook";
+  uri: string;
+  total_chapters: number;
+}

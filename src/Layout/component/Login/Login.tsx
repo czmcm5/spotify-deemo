@@ -1,12 +1,7 @@
 import { Button, styled } from "@mui/material";
 import { getSpotifyLogin } from "../../../utils/auth";
-import Profile from "./Profile";
 
 const LoginBtn = () => {
-  if (localStorage.getItem("access_token")) {
-    return <Profile />;
-  }
-
   return (
     <Login variant="contained" color="secondary" onClick={getSpotifyLogin}>
       로그인하기

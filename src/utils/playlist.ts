@@ -19,3 +19,11 @@ export function formatMinSec(ms: number): string {
 
   return `${minutes}:${paddedSeconds}`;
 }
+
+export function countPageNum(
+  perpage: number,
+  currentPage: number,
+  idx: number
+) {
+  return perpage * currentPage + idx + 1;
+}

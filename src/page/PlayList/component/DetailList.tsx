@@ -12,10 +12,10 @@ import useInfiniteScroll from "../../../hook/useInfiniteScroll";
 import ErrorMessage from "../../../Layout/ErrorMessage";
 import LoadingBar from "../../../style/LoadingBar";
 import LoadState, { Observer } from "../../../style/LodingBox";
-import EmptyPlaylist from "./EmptyPlaylist";
 import PlaylistItmesPC from "./PlaylistItmesPC";
+import { countPageNum } from "../../../utils/playlist";
 
-const DetailList = ({ id, isShow }: { id: string; isShow: boolean }) => {
+const DetailList = ({ id }: { id: string }) => {
   const {
     data: playlistItems,
     isLoading,
@@ -38,9 +38,7 @@ const DetailList = ({ id, isShow }: { id: string; isShow: boolean }) => {
   if (error) {
     return <ErrorMessage errMessage={error.message} />;
   }
-  return isShow ? (
-    <EmptyPlaylist />
-  ) : (
+  return (
     <Container>
       <Table stickyHeader sx={{ borderCollapse: "collapse" }}>
         <TableHead>
@@ -58,7 +56,7 @@ const DetailList = ({ id, isShow }: { id: string; isShow: boolean }) => {
             page.items.map((item, Iidx) => (
               <PlaylistItmesPC
                 key={Iidx}
-                idx={PIdx * 10 + Iidx + 1}
+                idx={countPageNum(10, PIdx, Iidx)}
                 item={item}
               />
             ))

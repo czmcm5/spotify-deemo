@@ -1,8 +1,10 @@
 import { styled } from "@mui/material";
 import FackLogo from "../../image/fake_Logo.png";
 import Login from "./Login/Login";
+import Profile from "./Login/Profile";
 
 const Topbar = () => {
+  const isLogin = !!localStorage.getItem("access_token");
   return (
     <Container>
       <Logo
@@ -11,7 +13,7 @@ const Topbar = () => {
         onClick={() => (window.location.href = "/")}
       />
 
-      <Login />
+      {isLogin ? <Profile /> : <Login />}
     </Container>
   );
 };

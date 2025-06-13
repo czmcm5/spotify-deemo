@@ -1,19 +1,13 @@
 import { styled, TableCell, TableRow } from "@mui/material";
 import MusicIcon from "../../../image/music.png";
 import { PlaylistTrack } from "../../../models/playlist";
-import { EpisodeObject, TrackObject } from "../../../models/tracks";
 import { formatMinSec, getDaysAgo } from "../../../utils/playlist";
+import { isEpisode } from "../../../utils/type";
 
 interface ItemsPropsType {
   item: PlaylistTrack;
   idx: number;
 }
-
-const isEpisode = (
-  track: TrackObject | EpisodeObject
-): track is EpisodeObject => {
-  return "description" in track;
-};
 
 const DesktopPlaylistItems = ({ item, idx }: ItemsPropsType) => {
   const imageSrc = isEpisode(item.track)
@@ -42,6 +36,7 @@ const DesktopPlaylistItems = ({ item, idx }: ItemsPropsType) => {
 export default DesktopPlaylistItems;
 
 const Row = styled(TableRow)`
+  border-radius: 4px;
   cursor: pointer;
   &:hover {
     background-color: #333333;

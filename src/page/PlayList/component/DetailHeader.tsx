@@ -74,6 +74,7 @@ const PicBox = styled("div")`
   }
 `;
 const ListName = styled("div")`
+  min-height: 5rem;
   font-size: 55px;
   font-weight: 700;
   display: -webkit-box;
