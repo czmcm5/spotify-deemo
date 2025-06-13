@@ -44,8 +44,8 @@ const PlayListHeader = styled("div")`
   display: flex;
   align-items: center;
   justify-items: flex-start;
-  height: 22rem;
-  padding: 4rem 2rem 0rem 2rem;
+  height: 18rem;
+  padding: 2rem 2rem 0 2rem;
   background: linear-gradient(to bottom, #424242, #222222 90%);
 `;
 const PicBox = styled("div")`
@@ -54,7 +54,7 @@ const PicBox = styled("div")`
   justify-content: center;
   position: relative;
   width: 100%;
-  max-width: 15rem;
+  max-width: 13rem;
   aspect-ratio: 1/1;
   margin-right: 1.5rem;
   background-color: #313131;
