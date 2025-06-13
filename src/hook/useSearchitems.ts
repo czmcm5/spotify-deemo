@@ -7,9 +7,8 @@ const useSearchitems = (params: SearchReq) => {
   const clientToken = useGetSpoAccessToken();
 
   return useInfiniteQuery({
-    queryKey: ["search", params],
+    queryKey: ["search", params.q, params.type],
     queryFn: ({ pageParam = 0 }) => {
-      if (params.q === "") return undefined;
       if (clientToken) {
         return searchitems(clientToken, {
           ...params,
@@ -18,6 +17,7 @@ const useSearchitems = (params: SearchReq) => {
       }
       return undefined;
     },
+    enabled: !!params.q,
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
       if (!lastPage) return undefined;

@@ -2,10 +2,11 @@ import { Box, styled, Typography } from "@mui/material";
 import useDebounce from "../../../hook/useDebounce";
 import useSearchKeyword from "../../../hook/useSearchKeyword";
 import SearchResult from "./search/SearchResult";
+import { SEARCH_TYPE } from "../../../models/search";
 
 const SearchPlaylist = () => {
-  const { keyword, updateKeyword } = useSearchKeyword();
-  const debouncedKeyword = useDebounce(keyword);
+  const { keyword, searchType } = useSearchKeyword();
+  const debouncedKeyword = useDebounce(keyword.value);
 
   return (
     <SearchBox>
@@ -13,15 +14,25 @@ const SearchPlaylist = () => {
         <Typography variant="h1">
           플레이리스트에 추가할 곡을 찾아보세요
         </Typography>
+        <SearchTypeSelect
+          value={searchType.value}
+          onChange={searchType.onchange}
+        >
+          <option value={SEARCH_TYPE.Track}>트랙</option>
+          <option value={SEARCH_TYPE.Album}>앨범</option>
+        </SearchTypeSelect>
         <SearchInput
-          value={keyword}
-          onChange={updateKeyword}
+          value={keyword.value}
+          onChange={keyword.onchange}
           placeholder="곡 또는 에피소드 검색하기"
         />
       </SearchBoxHeader>
 
       <SearchBoxScroll>
-        <SearchResult keyword={debouncedKeyword} />
+        <SearchResult
+          keyword={debouncedKeyword}
+          searchType={searchType.value}
+        />
       </SearchBoxScroll>
     </SearchBox>
   );
@@ -49,16 +60,36 @@ const SearchBoxScroll = styled(Box)`
     display: none;
   }
 `;
+const SearchTypeSelect = styled("select")`
+  box-sizing: border-box;
+  padding: 0.7rem;
+  height: 3rem;
+  font-size: 16px;
+  color: white;
+  background-color: #333333;
+  border: 1px solid #333333;
+  border-radius: 4px 0 0 4px;
+  outline: 0;
+  cursor: pointer;
+  &:hover {
+    border-color: #606060;
+  }
+  &:focus {
+    border-color: #b1b1b1;
+  }
+`;
 const SearchInput = styled("input")`
+  box-sizing: border-box;
   width: 100%;
   max-width: 23rem;
+  height: 3rem;
   padding: 0.7rem;
   margin: 1rem 0;
   font-size: 16px;
   color: white;
   background-color: #333333;
   border: 1px solid #333333;
-  border-radius: 4px;
+  border-radius: 0 4px 4px 0;
   outline: 0;
   &:hover {
     border-color: #606060;

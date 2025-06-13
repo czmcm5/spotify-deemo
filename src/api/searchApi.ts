@@ -6,10 +6,6 @@ export const searchitems = async (
   token: string,
   params: SearchReq
 ): Promise<SearchRes> => {
-  console.log("umm ", {
-    token,
-    params,
-  });
   try {
     const searchParams = new URLSearchParams();
     searchParams.append("q", params.q);
