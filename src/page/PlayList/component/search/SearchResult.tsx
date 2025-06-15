@@ -8,6 +8,7 @@ import { LoadingSpinner } from "../../../../style/LoadingBar";
 import LoadState, { Observer } from "../../../../style/LodingBox";
 import { countPageNum } from "../../../../utils/playlist";
 import NoSearchResult from "./NoSearchResult";
+import React from "react";
 
 interface SearchResultProps {
   keyword: string;
@@ -81,7 +82,7 @@ const SearchResult = ({ keyword, searchType }: SearchResultProps) => {
   );
 };
 
-export default SearchResult;
+export default React.memo(SearchResult);
 
 const Loding = styled("div")`
   display: flex;
