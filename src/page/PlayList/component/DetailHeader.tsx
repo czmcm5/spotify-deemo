@@ -19,6 +19,7 @@ const DetailHeader = ({ playlist, onSearch }: PlaylistDetail) => {
   const count = playlist?.tracks?.items.length || 0;
 
   const handleOnSearch = () => updateOnSearch("on");
+  const handleOffSearch = () => updateOnSearch("off");
 
   return (
     <PlayListHeader>
@@ -35,6 +36,11 @@ const DetailHeader = ({ playlist, onSearch }: PlaylistDetail) => {
           <span>•</span>
           <span>{count}곡</span>
           {onSearch && <Button onClick={handleOnSearch}>트랙 추가</Button>}
+          {count !== 0 && !onSearch && (
+            <Button onClick={handleOffSearch} sx={{ color: "tomato" }}>
+              닫기
+            </Button>
+          )}
         </InfoBox>
       </div>
     </PlayListHeader>
