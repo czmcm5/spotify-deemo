@@ -44,6 +44,7 @@ const Row = styled(TableRow)`
 `;
 const Cell = styled(TableCell)`
   border: 0;
+  padding: 0.5rem;
   && {
     font-size: 16px;
     color: #858585;

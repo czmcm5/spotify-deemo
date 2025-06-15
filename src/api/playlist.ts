@@ -1,5 +1,6 @@
 import { isAxiosError } from "axios";
 import {
+  AddItemToPlaylist,
   CreatePlaylist,
   GetCurrentUserPlaylistReq,
   GetCurrentUserPlaylistRes,
@@ -69,5 +70,22 @@ export const createPlaylist = async (
     return res.data;
   } catch (err) {
     throw new Error("fail createPlaylist");
+  }
+};
+
+export const addItemstoPlaylist = async (
+  params: AddItemToPlaylist
+): Promise<{ snapshot_id: string }> => {
+  try {
+    const res = await api.post(
+      `/playlists/${params.playlist_id}/tracks`,
+      params
+    );
+
+    return res.data;
+  } catch (err) {
+    if (isAxiosError(err) && err.response?.status === 401)
+      throw new Error("retry"); // 로그인 다시
+    throw new Error("fail add item to playlist");
   }
 };

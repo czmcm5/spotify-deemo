@@ -1,4 +1,8 @@
 import { Button, styled, TableCell, TableRow } from "@mui/material";
+import useAddItemToPlaylist from "../../../../hook/useAddItemToPlaylist";
+import { useParams } from "react-router";
+import AuthExpiredMessage from "../AuthExpiredMessage";
+import ErrorMessage from "../../../../Layout/ErrorMessage";
 
 interface SearchAlbumProps {
   idx: number;
@@ -8,6 +12,7 @@ interface SearchAlbumProps {
 }
 interface SearchTrackProps extends SearchAlbumProps {
   trackName: string;
+  uri: string;
 }
 
 export const SearchResultAlbum = ({
@@ -39,7 +44,30 @@ export const SearchResultTrack = ({
   trackName,
   albumName,
   artistName,
+  uri,
 }: SearchTrackProps) => {
+  // props drilling이 3번이나 일어나는건 별로같아서 따로뺐으나
+  // 추후 context API로 수정해보기
+  const { id: playlist_id } = useParams();
+  const {
+    mutate: AddItemToPlaylist,
+    isPending,
+    error,
+  } = useAddItemToPlaylist();
+
+  const handleAddItemToPlaylist = () => {
+    if (isPending) return;
+    if (playlist_id) {
+      AddItemToPlaylist({ playlist_id, uris: [uri] });
+    }
+  };
+
+  if (error && error.message === "retry") {
+    return <AuthExpiredMessage />;
+  }
+  if (error) {
+    return <ErrorMessage errMessage={error.message} />;
+  }
   return (
     <Row>
       <Cell>{idx}</Cell>
@@ -54,7 +82,7 @@ export const SearchResultTrack = ({
       </Cell>
       <Cell>{albumName}</Cell>
       <Cell>
-        <AddTrackBtn>추가하기</AddTrackBtn>
+        <AddTrackBtn onClick={handleAddItemToPlaylist}>추가하기</AddTrackBtn>
       </Cell>
     </Row>
   );

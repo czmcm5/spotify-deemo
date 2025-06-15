@@ -69,3 +69,9 @@ export interface CreatePlaylist {
   collaborative?: boolean;
   description?: string;
 }
+
+export interface AddItemToPlaylist {
+  playlist_id: string;
+  uris?: string[];
+  position?: number;
+}

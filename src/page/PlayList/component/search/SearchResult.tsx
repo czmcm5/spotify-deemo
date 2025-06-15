@@ -1,4 +1,5 @@
 import { styled, Table, TableBody } from "@mui/material";
+import { searchConfig } from "../../../../configs/search";
 import useInfiniteScroll from "../../../../hook/useInfiniteScroll";
 import useSearchitems from "../../../../hook/useSearchitems";
 import ErrorMessage from "../../../../Layout/ErrorMessage";
@@ -7,7 +8,6 @@ import { LoadingSpinner } from "../../../../style/LoadingBar";
 import LoadState, { Observer } from "../../../../style/LodingBox";
 import { countPageNum } from "../../../../utils/playlist";
 import NoSearchResult from "./NoSearchResult";
-import { searchConfig } from "../../../../configs/search";
 
 interface SearchResultProps {
   keyword: string;

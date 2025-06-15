@@ -30,7 +30,9 @@ const PlayListDetailPage = () => {
       {playlist?.tracks?.total === 0 ? (
         <SearchPlaylist />
       ) : (
-        <DetailList id={id} />
+        <>
+          <DetailList id={id} />
+        </>
       )}
     </PageBox>
   );

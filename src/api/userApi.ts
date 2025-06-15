@@ -3,10 +3,8 @@ import { logout } from "../utils/auth";
 import api from "./__baseAIP";
 
 export const getCurrentUserProfile = async (): Promise<UserProfile> => {
-  // console.log("api 실행");
   try {
     const res = await api.get("/me");
-
     return res.data;
   } catch (err) {
     logout();

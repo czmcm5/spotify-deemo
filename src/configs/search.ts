@@ -23,6 +23,7 @@ export const searchConfig: Record<
       trackName: item.name,
       albumName: item.album.name || "",
       artistName: item.artists[0].name || "알수없음",
+      uri: item.uri,
     }),
   },
   [SEARCH_TYPE.Album]: {
