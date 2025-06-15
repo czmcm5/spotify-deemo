@@ -1,26 +1,29 @@
-import { styled } from "@mui/material";
+import { Button, styled } from "@mui/material";
 import FackLogo from "../../../image/fake_Logo.png";
 import MusicIcon from "../../../image/music.png";
+import { Playlist } from "../../../models/playlist";
+import { useOnSearchContext } from "../../../context/OnSearchProvider";
 
 interface PlaylistDetail {
-  image: string | null;
-  listName: string;
-  description: string;
-  ownerName: string;
-  count: number;
+  playlist: Playlist;
+  onSearch: boolean;
 }
 
-const DetailHeader = ({
-  image,
-  listName,
-  description,
-  ownerName,
-  count,
-}: PlaylistDetail) => {
+const DetailHeader = ({ playlist, onSearch }: PlaylistDetail) => {
+  const { updateOnSearch } = useOnSearchContext();
+
+  const image = playlist?.images ? playlist?.images[0].url : MusicIcon;
+  const listName = playlist?.name || "";
+  const description = playlist?.description || "";
+  const ownerName = playlist?.owner?.display_name || "알수없음";
+  const count = playlist?.tracks?.items.length || 0;
+
+  const handleOnSearch = () => updateOnSearch("on");
+
   return (
     <PlayListHeader>
       <PicBox>
-        <img src={image || MusicIcon} />
+        <img src={image} />
       </PicBox>
 
       <div>
@@ -31,6 +34,7 @@ const DetailHeader = ({
           <span>{ownerName}</span>
           <span>•</span>
           <span>{count}곡</span>
+          {onSearch && <Button onClick={handleOnSearch}>트랙 추가</Button>}
         </InfoBox>
       </div>
     </PlayListHeader>

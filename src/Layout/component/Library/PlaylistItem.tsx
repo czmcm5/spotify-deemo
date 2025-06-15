@@ -1,5 +1,5 @@
 import { styled, Typography } from "@mui/material";
-import useFouces from "../../../hook/useFocuse";
+import useFouces from "../../../hook/local/useFocuse";
 import MusicIcon from "../../../image/music.png";
 import playIcon from "../../../image/playIcon.png";
 import { SimplifiedPlaylist } from "../../../models/playlist";

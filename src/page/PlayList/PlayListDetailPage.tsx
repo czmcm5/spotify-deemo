@@ -1,16 +1,27 @@
 import styled from "@mui/styled-engine-sc";
 import { useParams } from "react-router";
+import {
+  OnSearchProvider,
+  useOnSearchContext,
+} from "../../context/OnSearchProvider";
 import useGetPlaylist from "../../hook/useGetPlaylist";
 import ErrorMessage from "../../Layout/ErrorMessage";
 import AuthExpiredMessage from "./component/AuthExpiredMessage";
 import DetailHeader from "./component/DetailHeader";
 import DetailList from "./component/DetailList";
 import SearchPlaylist from "./component/EmptyPlaylist";
+import { useEffect } from "react";
 
 const PlayListDetailPage = () => {
   const { id = "" } = useParams<{ id: string }>();
   const { data: playlist, error } = useGetPlaylist({ playlist_id: id });
+  const { onSearch, updateOnSearch } = useOnSearchContext();
 
+  useEffect(() => {
+    updateOnSearch("off");
+  }, [id]);
+
+  if (!playlist) return null;
   if (error && error.message === "retry") {
     return <AuthExpiredMessage />;
   }
@@ -20,14 +31,11 @@ const PlayListDetailPage = () => {
   return (
     <PageBox>
       <DetailHeader
-        image={playlist?.images ? playlist?.images[0].url : null}
-        listName={playlist?.name || ""}
-        description={playlist?.description || ""}
-        ownerName={playlist?.owner?.display_name || "알수없음"}
-        count={playlist?.tracks?.items.length || 0}
+        playlist={playlist}
+        onSearch={!onSearch && playlist?.tracks?.total !== 0}
       />
 
-      {playlist?.tracks?.total === 0 ? (
+      {playlist?.tracks?.total === 0 || onSearch ? (
         <SearchPlaylist />
       ) : (
         <>
@@ -37,7 +45,16 @@ const PlayListDetailPage = () => {
     </PageBox>
   );
 };
-export default PlayListDetailPage;
+
+const DetailPage = () => {
+  return (
+    <OnSearchProvider>
+      <PlayListDetailPage />
+    </OnSearchProvider>
+  );
+};
+
+export default DetailPage;
 
 const PageBox = styled("div")`
   display: flex;

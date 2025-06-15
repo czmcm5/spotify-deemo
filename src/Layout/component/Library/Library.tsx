@@ -1,7 +1,7 @@
 import styled from "@mui/styled-engine-sc";
 import useGetCurrentUserPlaylists from "../../../hook/useGetCurrentUserPlaylists";
 import useGetProfile from "../../../hook/useGetProfile";
-import useInfiniteScroll from "../../../hook/useInfiniteScroll";
+import useInfiniteScroll from "../../../hook/local/useInfiniteScroll";
 import LoadingBar from "../../../style/LoadingBar";
 import ErrorMessage from "../../ErrorMessage";
 import LoadState, { Observer } from "../../../style/LodingBox";

@@ -1,8 +1,8 @@
 import { styled } from "@mui/material";
 import useGetProfile from "../../../hook/useGetProfile";
-import useModal from "../../../hook/useModal";
-import useOutsideClick from "../../../hook/useOutsideClick";
-import useRendomColor from "../../../hook/useRendomColor";
+import useModal from "../../../hook/local/useModal";
+import useOutsideClick from "../../../hook/local/useOutsideClick";
+import useRendomColor from "../../../hook/local/useRendomColor";
 import ProfileIcon from "../../../image/profileIcon.png";
 import ProfileModal from "./ProfileModal";
 

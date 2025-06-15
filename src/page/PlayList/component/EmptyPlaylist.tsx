@@ -1,5 +1,5 @@
 import { Box, styled, Typography } from "@mui/material";
-import useDebounce from "../../../hook/useDebounce";
+import useDebounce from "../../../hook/local/useDebounce";
 import useSearchKeyword from "../../../hook/useSearchKeyword";
 import SearchResult from "./search/SearchResult";
 import { SEARCH_TYPE } from "../../../models/search";
