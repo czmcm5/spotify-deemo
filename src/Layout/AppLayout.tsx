@@ -1,9 +1,11 @@
 import { styled } from "@mui/material";
 import { Outlet } from "react-router";
-import NavBox from "./component/NavBox";
-import LibraryHead from "./component/Library/LibraryHead";
+import AlertBox from "./AlertBox";
 import Library from "./component/Library/Library";
+import LibraryHead from "./component/Library/LibraryHead";
+import NavBox from "./component/NavBox";
 import Topbar from "./component/Topbar";
+import { AlertProvider } from "../context/AlertProvider";
 
 const AppLayout = () => {
   return (
@@ -20,9 +22,13 @@ const AppLayout = () => {
           </LibraryBox>
         </SiderBar>
 
-        <MainContent>
-          <Outlet />
-        </MainContent>
+        <AlertProvider>
+          <MainContent>
+            <Outlet />
+          </MainContent>
+
+          <AlertBox />
+        </AlertProvider>
       </PageContainer>
     </Layout>
   );
