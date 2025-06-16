@@ -46,7 +46,6 @@ export default CardList;
 
 const List = styled("div")`
   display: flex;
-  margin-top: 2rem;
   overflow: auto;
   ${({ theme }) => theme.breakpoints.down("md")} {
     grid-template-columns: 1fr 1fr 1fr;

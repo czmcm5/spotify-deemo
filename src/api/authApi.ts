@@ -8,6 +8,7 @@ const encodeBase64 = (data: string) => {
   return Buffer.from(data).toString("base64");
 };
 
+/** client access token - 로그인 토큰과 별개. */
 export const getSpotifyToken = async (): Promise<SpoAccessTokenRes> => {
   try {
     const body = new URLSearchParams({

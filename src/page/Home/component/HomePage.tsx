@@ -14,15 +14,15 @@ const NowReleases = () => {
     return <ErrorMessage errMessage={error.message} />;
   }
   return (
-    <div>
-      <Typography variant="h1" paddingTop={2}>
+    <>
+      <Typography variant="h1" padding={2} paddingTop={6}>
         최근 출시 앨범
       </Typography>
 
       {data && data.albums.items.length > 0 && (
         <CardList albums={data.albums.items} />
       )}
-    </div>
+    </>
   );
 };
 export default NowReleases;

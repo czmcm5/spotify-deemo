@@ -4,15 +4,17 @@ import { LoadingSpinner } from "./LoadingBar";
 const LoadState = ({
   isLoading,
   isFinished,
+  showText = true,
 }: {
   isLoading: boolean;
   isFinished: boolean;
+  showText?: boolean;
 }) => {
   return (
     <Loding>
       {isLoading ? (
         <LoadingSpinner width={30} height={30} />
-      ) : isFinished ? (
+      ) : isFinished && showText ? (
         <div>마지막 입니다.</div>
       ) : (
         <></>
