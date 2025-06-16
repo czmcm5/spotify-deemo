@@ -1,10 +1,15 @@
 import { styled } from "@mui/material";
+import { useLocation } from "react-router";
 import FackLogo from "../../image/fake_Logo.png";
 import Login from "./Login/Login";
 import Profile from "./Login/Profile";
+import SearchBox from "./Search/SearchBox";
 
 const Topbar = () => {
+  const { pathname } = useLocation();
   const isLogin = !!localStorage.getItem("access_token");
+  const isSearch = pathname === "/search";
+
   return (
     <Container>
       <Logo
@@ -13,6 +18,7 @@ const Topbar = () => {
         onClick={() => (window.location.href = "/")}
       />
 
+      {isSearch && <SearchBox />}
       {isLogin ? <Profile /> : <Login />}
     </Container>
   );
