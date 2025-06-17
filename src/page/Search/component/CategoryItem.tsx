@@ -4,12 +4,14 @@ import { CategoryItem } from "../../../models/category";
 const CategoryItemBox = ({
   bgColor,
   item,
+  ...props
 }: {
   bgColor: string;
   item: CategoryItem;
+  onClick: () => void;
 }) => {
   return (
-    <CardBox bgColor={bgColor}>
+    <CardBox bgColor={bgColor} {...props}>
       <Typography variant="h1">{item.name}</Typography>
       <PicBox>
         <img src={item.icons[0].url} alt="카테고리 아이콘" />

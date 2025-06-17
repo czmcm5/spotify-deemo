@@ -6,8 +6,10 @@ import { getBgolor } from "../../utils/category";
 import useInfiniteScroll from "../../hook/local/useInfiniteScroll";
 import LoadState, { Observer } from "../../style/LodingBox";
 import CategoryItemBox from "./component/CategoryItem";
+import { useNavigate } from "react-router";
 
 const SearchPage = () => {
+  const Navigate = useNavigate();
   const {
     data: categoryList,
     error,
@@ -23,6 +25,8 @@ const SearchPage = () => {
     isFinished: !hasNextPage,
     onIntersect: fetchNextPage,
   });
+
+  const goSearchResult = (category: string) => Navigate(category);
 
   if (!categoryList) {
     return null;
@@ -42,7 +46,12 @@ const SearchPage = () => {
       <List>
         {categoryList?.pages.map((page) =>
           page?.categories.items.map((item, idx) => (
-            <CategoryItemBox key={idx} item={item} bgColor={getBgolor(idx)} />
+            <CategoryItemBox
+              key={idx}
+              item={item}
+              bgColor={getBgolor(idx)}
+              onClick={() => goSearchResult(item.name)}
+            />
           ))
         )}
 
