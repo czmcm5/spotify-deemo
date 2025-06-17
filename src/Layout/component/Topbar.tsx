@@ -8,7 +8,7 @@ import SearchBox from "./Search/SearchBox";
 const Topbar = () => {
   const { pathname } = useLocation();
   const isLogin = !!localStorage.getItem("access_token");
-  const isSearch = pathname === "/search";
+  const isSearch = pathname.includes("/search");
 
   return (
     <Container>

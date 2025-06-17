@@ -1,7 +1,15 @@
 import { styled } from "@mui/material";
+import useMoveSearchUrl from "../../../hook/local/useMoveSearchUrl";
 
 const SearchBox = () => {
-  return <SearchInput placeholder="어떤 콘텐츠를 감상하고 싶으세요?" />;
+  const { keyword, updateKeyword } = useMoveSearchUrl();
+  return (
+    <SearchInput
+      value={keyword}
+      onChange={updateKeyword}
+      placeholder="어떤 콘텐츠를 감상하고 싶으세요?"
+    />
+  );
 };
 
 export default SearchBox;
@@ -13,6 +21,7 @@ const SearchInput = styled("input")`
   height: 3rem;
   padding: 1rem;
   font-size: 16px;
+  color: white;
   background-color: #2a2a2a;
   outline: 0;
   border: 1px solid #2a2a2a;
