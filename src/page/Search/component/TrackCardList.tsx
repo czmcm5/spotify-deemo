@@ -68,7 +68,7 @@ const ListResult = ({
 const TrackCardList = ({ tracks }: { tracks: TrackObject[] }) => {
   return (
     <TrackBox>
-      <section flex={1}>
+      <section>
         <Typography variant="h1" padding={2} paddingTop={6}>
           상위 결과
         </Typography>
@@ -78,7 +78,7 @@ const TrackCardList = ({ tracks }: { tracks: TrackObject[] }) => {
           albumName={tracks[0].album.name}
         />
       </section>
-      <section flex={1}>
+      <section>
         <Typography variant="h1" padding={2} paddingTop={6}>
           곡
         </Typography>

@@ -1,24 +1,25 @@
 import { styled } from "@mui/material";
-import { useLocation } from "react-router";
+import {
+  SearchFilterProvider,
+  useSearchFilterContext,
+} from "../../context/useMakeSearchKeyword";
 import useSearchitems from "../../hook/useSearchitems";
 import ErrorMessage from "../../Layout/ErrorMessage";
-import { SEARCH_TYPE } from "../../models/search";
 import { LoadingSpinner } from "../../style/LoadingBar";
 import NoSearchResult from "../PlayList/component/search/NoSearchResult";
+import FilterBox from "./component/FilterBox";
 import {
   renderAlbums,
   renderArtists,
   renderTracks,
 } from "./component/renderPages";
 
-const SearchWithKeywordPage = () => {
-  const { pathname } = useLocation();
-  const keyword = decodeURIComponent(pathname.replace("/search/", ""));
-
+const SearchWithKeyword = () => {
+  const { keyword, type, limit } = useSearchFilterContext();
   const { data, error, isLoading } = useSearchitems({
     q: keyword,
-    type: [SEARCH_TYPE.Track, SEARCH_TYPE.Album, SEARCH_TYPE.Artist],
-    limit: 6,
+    type,
+    limit,
   });
 
   if (isLoading) {
@@ -44,14 +45,25 @@ const SearchWithKeywordPage = () => {
   }
 
   return (
-    <List>
+    <>
       {renderTracks(firstPage)}
       {renderArtists(firstPage)}
       {renderAlbums(firstPage)}
+    </>
+  );
+};
+
+const SearchResult = () => {
+  return (
+    <List>
+      <SearchFilterProvider>
+        <FilterBox />
+        <SearchWithKeyword />
+      </SearchFilterProvider>
     </List>
   );
 };
-export default SearchWithKeywordPage;
+export default SearchResult;
 
 const List = styled("div")`
   box-sizing: border-box;

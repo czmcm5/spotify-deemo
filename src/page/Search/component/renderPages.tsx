@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
-import ArtistCardList from "./ArtistCardList";
 import { SearchRes } from "../../../models/search";
-import TrackCardList from "./TrackCardList";
 import CardList from "../../Home/component/Card";
+import ArtistCardList from "./ArtistCardList";
+import TrackCardList from "./TrackCardList";
 
 export const renderTracks = (page: SearchRes) => {
   const tracks = page.tracks;
