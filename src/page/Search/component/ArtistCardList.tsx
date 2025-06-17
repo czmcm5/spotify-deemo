@@ -1,15 +1,15 @@
 import { styled, Typography } from "@mui/material";
+import { ArtistsType } from "../../../models/artist";
+import PlayBtn from "../../Home/component/PlayBtn";
 import useFouces from "../../../hook/local/useFocuse";
-import { AlbumItemType } from "../../../models/album";
-import PlayBtn from "./PlayBtn";
+import MusicIcon from "../../../image/music.png";
 
 interface CardProps {
   img: string;
-  name: string;
-  artist?: string;
+  name?: string;
 }
 
-const Card = ({ img, name, artist = "알수없음" }: CardProps) => {
+const Card = ({ img, name = "알수없음" }: CardProps) => {
   const focuse = useFouces();
 
   return (
@@ -20,21 +20,20 @@ const Card = ({ img, name, artist = "알수없음" }: CardProps) => {
       </PicBox>
 
       <Title>{name}</Title>
-      <Typography variant="subtitle1">{artist}</Typography>
+      <Typography variant="subtitle1">Artist</Typography>
     </CardBox>
   );
 };
 
-const CardList = ({ albums }: { albums: AlbumItemType[] }) => {
+const ArtistCardList = ({ artists }: { artists: ArtistsType[] }) => {
   return (
     <List>
-      {albums.map((item, i) => {
+      {artists.map((item, i) => {
         return (
           <Card
             key={i}
-            img={item.images[0]?.url}
+            img={item.images[0]?.url || MusicIcon}
             name={item.name}
-            artist={item.artists[0].name}
           />
         );
       })}
@@ -42,17 +41,15 @@ const CardList = ({ albums }: { albums: AlbumItemType[] }) => {
   );
 };
 
-export default CardList;
+export default ArtistCardList;
 
 const List = styled("div")`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   ${({ theme }) => theme.breakpoints.down("md")} {
     grid-template-columns: 1fr 1fr 1fr;
-    display: grid;
   }
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    display: grid;
     grid-template-columns: 1fr 1fr;
   }
 `;
@@ -75,11 +72,9 @@ const PicBox = styled("div")`
   width: 100%;
   aspect-ratio: 1/1;
   margin-bottom: 1rem;
-  border-radius: 8px;
-  overflow: hidden;
   img.Thumbnail {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    border-radius: 50%;
   }
 `;

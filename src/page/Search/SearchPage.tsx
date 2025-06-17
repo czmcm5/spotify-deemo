@@ -5,7 +5,7 @@ import LoadingBar from "../../style/LoadingBar";
 import { getBgolor } from "../../utils/category";
 import useInfiniteScroll from "../../hook/local/useInfiniteScroll";
 import LoadState, { Observer } from "../../style/LodingBox";
-import CategoryItemBox from "./component/categoryItem";
+import CategoryItemBox from "./component/CategoryItem";
 
 const SearchPage = () => {
   const {

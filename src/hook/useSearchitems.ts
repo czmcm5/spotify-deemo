@@ -17,7 +17,7 @@ const useSearchitems = (params: SearchReq) => {
       }
       return undefined;
     },
-    enabled: !!params.q,
+    enabled: !!params.q && !!clientToken,
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
       if (!lastPage) return undefined;
