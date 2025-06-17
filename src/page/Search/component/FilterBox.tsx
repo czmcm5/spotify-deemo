@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import { useSearchFilterContext } from "../../../context/useMakeSearchKeyword";
+import { useSearchFilterContext } from "../../../context/SearchFilterProvider";
 
 const FilterBox = () => {
   const { setMenuName, isSelected } = useSearchFilterContext();

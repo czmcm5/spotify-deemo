@@ -1,6 +1,6 @@
 import { Box, styled, Typography } from "@mui/material";
 import useSearchKeyword from "../../../hook/useSearchKeyword";
-import SearchResult from "./search/SearchResult";
+import SearchResult from "./search/PlaylistSearchResult";
 import { SEARCH_TYPE } from "../../../models/search";
 import useDebounce from "../../../hook/local/useDebounce";
 

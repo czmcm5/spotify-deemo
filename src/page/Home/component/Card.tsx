@@ -3,59 +3,28 @@ import useFouces from "../../../hook/local/useFocuse";
 import { AlbumItemType } from "../../../models/album";
 import PlayBtn from "./PlayBtn";
 
-interface CardProps {
-  img: string;
-  name: string;
-  artist?: string;
-}
-
-const Card = ({ img, name, artist = "알수없음" }: CardProps) => {
+const CardList = ({ albums }: { albums: AlbumItemType }) => {
   const focuse = useFouces();
 
   return (
     <CardBox onMouseOver={focuse.on} onMouseLeave={focuse.off}>
       <PicBox>
-        <img src={img} alt={name} className="Thumbnail" />
+        <img
+          src={albums.images[0]?.url}
+          alt={albums.name}
+          className="Thumbnail"
+        />
         <PlayBtn isfocuse={focuse.isfocuse} />
       </PicBox>
 
-      <Title>{name}</Title>
-      <Typography variant="subtitle1">{artist}</Typography>
+      <Title>{albums.name}</Title>
+      <Typography variant="subtitle1">{albums.artists[0].name}</Typography>
     </CardBox>
-  );
-};
-
-const CardList = ({ albums }: { albums: AlbumItemType[] }) => {
-  return (
-    <List>
-      {albums.map((item, i) => {
-        return (
-          <Card
-            key={i}
-            img={item.images[0]?.url}
-            name={item.name}
-            artist={item.artists[0].name}
-          />
-        );
-      })}
-    </List>
   );
 };
 
 export default CardList;
 
-const List = styled("div")`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  ${({ theme }) => theme.breakpoints.down("md")} {
-    grid-template-columns: 1fr 1fr 1fr;
-    display: grid;
-  }
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-`;
 const CardBox = styled("div")`
   flex: 1;
   padding: 1rem;

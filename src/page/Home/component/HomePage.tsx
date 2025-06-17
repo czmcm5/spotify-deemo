@@ -1,8 +1,9 @@
 import { Typography } from "@mui/material";
 import useGetNewReleases from "../../../hook/useGetNewReleases";
-import CardList from "./Card";
 import ErrorMessage from "../../../Layout/ErrorMessage";
+import { CardGridList } from "../../../style/CardStyled";
 import LoadingBar from "../../../style/LoadingBar";
+import CardList from "./Card";
 
 const NowReleases = () => {
   const { data, error, isLoading } = useGetNewReleases();
@@ -19,9 +20,11 @@ const NowReleases = () => {
         최근 출시 앨범
       </Typography>
 
-      {data && data.albums.items.length > 0 && (
-        <CardList albums={data.albums.items} />
-      )}
+      <CardGridList>
+        {data?.albums.items.map((item, idx) => (
+          <CardList key={idx} albums={item} />
+        ))}
+      </CardGridList>
     </>
   );
 };

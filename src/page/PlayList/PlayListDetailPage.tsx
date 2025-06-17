@@ -9,7 +9,7 @@ import ErrorMessage from "../../Layout/ErrorMessage";
 import AuthExpiredMessage from "./component/AuthExpiredMessage";
 import DetailHeader from "./component/DetailHeader";
 import DetailList from "./component/DetailList";
-import SearchPlaylist from "./component/EmptyPlaylist";
+import SearchPlaylist from "./component/SearchPlaylist";
 import { useEffect } from "react";
 
 const PlayListDetailPage = () => {

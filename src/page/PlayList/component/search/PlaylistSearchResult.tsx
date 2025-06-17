@@ -15,7 +15,7 @@ interface SearchResultProps {
   searchType: SEARCH_TYPE;
 }
 
-const SearchResult = ({ keyword, searchType }: SearchResultProps) => {
+const PlaylistSearchResult = ({ keyword, searchType }: SearchResultProps) => {
   const {
     data,
     error,
@@ -82,7 +82,7 @@ const SearchResult = ({ keyword, searchType }: SearchResultProps) => {
   );
 };
 
-export default React.memo(SearchResult);
+export default React.memo(PlaylistSearchResult);
 
 const Loding = styled("div")`
   display: flex;

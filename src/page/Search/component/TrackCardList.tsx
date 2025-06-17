@@ -1,12 +1,13 @@
-import { Box, Button, styled, Typography } from "@mui/material";
+import { Box, Button, styled, TableBody, Typography } from "@mui/material";
 import MusicIcon from "../../../image/music.png";
 import { TrackObject } from "../../../models/tracks";
-import { formatMinSec } from "../../../utils/playlist";
+import { countPageNum, formatMinSec } from "../../../utils/playlist";
 import useFouces from "../../../hook/local/useFocuse";
 import PlayBtn from "../../Home/component/PlayBtn";
 
 interface CardProps {
   img: string;
+  idx?: number;
   name?: string;
   albumName?: string;
   artistName?: string;
@@ -35,6 +36,7 @@ const TopResult = ({
 };
 
 const ListResult = ({
+  idx,
   img,
   name = "알수없음",
   artistName = "알수없음",
@@ -45,6 +47,11 @@ const ListResult = ({
   return (
     <Row onMouseOver={focuse.on} onMouseLeave={focuse.off}>
       <Box display={"flex"} alignItems={"center"}>
+        {idx && (
+          <Typography variant="subtitle1" marginRight={2}>
+            {idx}
+          </Typography>
+        )}
         <PicBox>
           <img src={img} alt={name} className="Thumbnail" />
         </PicBox>
@@ -65,8 +72,27 @@ const ListResult = ({
   );
 };
 
-const TrackCardList = ({ tracks }: { tracks: TrackObject[] }) => {
-  return (
+const TrackCardList = ({
+  tracks,
+  pagenum,
+  isCurrentMenu,
+}: { tracks: TrackObject[] } & { pagenum: number; isCurrentMenu: boolean }) => {
+  return isCurrentMenu ? (
+    <Box>
+      {tracks.map((item, i) => {
+        return (
+          <ListResult
+            key={i}
+            idx={countPageNum(20, pagenum, i)}
+            img={item.album.images?.[0]?.url || MusicIcon}
+            name={item.name}
+            artistName={item.artists[0].name}
+            duration_ms={item.duration_ms}
+          />
+        );
+      })}
+    </Box>
+  ) : (
     <TrackBox>
       <section>
         <Typography variant="h1" padding={2} paddingTop={6}>

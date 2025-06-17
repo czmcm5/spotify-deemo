@@ -6,9 +6,7 @@ import LoadingBar from "./style/LoadingBar";
 const AppLayout = React.lazy(() => import("./Layout/AppLayout"));
 const HomePage = React.lazy(() => import("./page/Home/HomePage"));
 const SearchPage = React.lazy(() => import("./page/Search/SearchPage"));
-const SearchWithKeywordPage = React.lazy(
-  () => import("./page/Search/SearchWithKeywordPage")
-);
+const SearchResult = React.lazy(() => import("./page/Search/SearchResultPage"));
 const PlayListlPage = React.lazy(() => import("./page/PlayList/PlayListlPage"));
 const PlayListDetailPage = React.lazy(
   () => import("./page/PlayList/PlayListDetailPage")
@@ -41,7 +39,7 @@ function App() {
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
           <Route path="search" element={<SearchPage />} />
-          <Route path="search/:keyword" element={<SearchWithKeywordPage />} />
+          <Route path="search/:keyword" element={<SearchResult />} />
           <Route path="/playlist" element={<PlayListlPage />} />
           <Route path="playlist/:id" element={<PlayListDetailPage />} />
         </Route>
