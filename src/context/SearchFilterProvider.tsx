@@ -61,7 +61,7 @@ export const SearchFilterProvider = ({
     [selectedFilter]
   );
 
-  const limit = useMemo(() => (type.length === 1 ? 20 : 6), [type.length]);
+  const limit = useMemo(() => (type.length === 1 ? 40 : 6), [type.length]);
 
   const isSelected = useCallback(
     (label: string) => menuName === label,
