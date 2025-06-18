@@ -26,6 +26,6 @@ export const searchitems = async (
     });
     return res.data;
   } catch (err) {
-    throw new Error();
+    throw new Error("실패: 검색 결과 가져오기");
   }
 };
