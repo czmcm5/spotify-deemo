@@ -77,10 +77,6 @@ const Container = styled(TableContainer)`
   padding-bottom: 5rem;
   overflow: auto;
   overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 const Cell = styled(TableCell)`
   ${({ theme }) => theme.breakpoints.down("md")} {

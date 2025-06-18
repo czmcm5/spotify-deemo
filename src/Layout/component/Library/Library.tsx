@@ -55,7 +55,7 @@ const Library = () => {
           <PlaylistItem
             key={idx}
             item={item}
-            goPage={() => goPlaylistDetail(item.id || "")}
+            onClick={() => goPlaylistDetail(item.id || "")}
             isSelect={id === item.id}
           />
         ))
@@ -73,12 +73,4 @@ const ListBox = styled("div")`
   height: 100%;
   padding-bottom: 7rem;
   overflow: scroll;
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #636363;
-    border-radius: 10px;
-    cursor: pointer;
-  }
 `;

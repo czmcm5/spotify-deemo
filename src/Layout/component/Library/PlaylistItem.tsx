@@ -6,18 +6,18 @@ import { SimplifiedPlaylist } from "../../../models/playlist";
 
 const Playlist = ({
   item,
-  goPage,
+  onClick,
   isSelect,
 }: {
   item: SimplifiedPlaylist;
-  goPage: () => void;
+  onClick: () => void;
   isSelect: boolean;
 }) => {
   const focuse = useFouces();
 
   return (
     <ItemBox
-      onClick={goPage}
+      onClick={onClick}
       className={isSelect ? "select" : ""}
       onMouseOver={focuse.on}
       onMouseLeave={focuse.off}

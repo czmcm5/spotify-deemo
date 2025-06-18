@@ -55,10 +55,6 @@ const SearchBoxScroll = styled(Box)`
   flex-grow: 1;
   padding: 0 1rem 5rem 1rem;
   overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 const SearchTypeSelect = styled("select")`
   box-sizing: border-box;

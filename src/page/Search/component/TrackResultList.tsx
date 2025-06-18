@@ -1,16 +1,13 @@
-import { Box } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import PlaylistModal from "../../../component/Playlist/Modal";
 import { useTrackSelected } from "../../../context/useTrackSelection";
 import useOutsideClick from "../../../hook/local/useOutsideClick";
 import MusicIcon from "../../../image/music.png";
 import { TrackObject } from "../../../models/tracks";
-import { countPageNum } from "../../../utils/playlist";
 import TrackListItem from "./TrackListItem";
 
-const TrackInfinityList = ({
-  tracks,
-  pagenum,
-}: { tracks: TrackObject[] } & { pagenum: number }) => {
+const TrackResultList = ({ tracks }: { tracks: TrackObject[] }) => {
   const { trackUri, selectTrack, selectPlaylist } = useTrackSelected();
   const ModalRef = useOutsideClick(() => {
     selectTrack(null);
@@ -22,13 +19,17 @@ const TrackInfinityList = ({
   };
 
   return (
-    <Box>
+    <Box flex={1}>
+      <Typography variant="h1" padding={2} paddingTop={6}>
+        곡
+      </Typography>
+
       {tracks.map((item, i) => {
+        if (i > 3) return null;
         return (
           <Box position={"relative"}>
             <TrackListItem
               key={i}
-              idx={countPageNum(20, pagenum, i)}
               img={item.album.images?.[0]?.url || MusicIcon}
               name={item.name}
               artistName={item.artists[0].name}
@@ -47,4 +48,4 @@ const TrackInfinityList = ({
   );
 };
 
-export default TrackInfinityList;
+export default TrackResultList;

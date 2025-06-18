@@ -1,50 +1,35 @@
-import PlayBtn from "../../Home/component/PlayBtn";
-import useFouces from "../../../hook/local/useFocuse";
-import { Box, styled } from "@mui/system";
 import { Button, Typography } from "@mui/material";
+import { Box, styled } from "@mui/system";
+import useFouces from "../../../hook/local/useFocuse";
 import { formatMinSec } from "../../../utils/playlist";
 
 interface CardProps {
-  img: string;
+  img?: string;
   idx?: number;
   name?: string;
-  albumName?: string;
   artistName?: string;
   duration_ms?: number;
+  isSelect: boolean;
+  onClick?: () => void;
 }
 
-export const TopResult = ({
-  img,
-  name = "알수없음",
-  albumName = "알수없음",
-}: CardProps) => {
-  const focuse = useFouces();
-
-  return (
-    <CardBox onMouseOver={focuse.on} onMouseLeave={focuse.off}>
-      <PicBox width={8}>
-        <img src={img} alt={name} className="Thumbnail" />
-      </PicBox>
-      <Typography variant="h1" fontSize={30} paddingBottom={1} paddingTop={1}>
-        {name}
-      </Typography>
-      <Typography> 앨범 • {albumName}</Typography>
-      <PlayBtn isfocuse={focuse.isfocuse} />
-    </CardBox>
-  );
-};
-
-export const ListResult = ({
+const TrackListItem = ({
   idx,
   img,
   name = "알수없음",
   artistName = "알수없음",
   duration_ms = 0,
+  isSelect,
+  ...props
 }: CardProps) => {
   const focuse = useFouces();
 
   return (
-    <Row onMouseOver={focuse.on} onMouseLeave={focuse.off}>
+    <Row
+      onMouseOver={focuse.on}
+      onMouseLeave={focuse.off}
+      className={isSelect ? "select" : undefined}
+    >
       <Box display={"flex"} alignItems={"center"}>
         {idx && (
           <Typography variant="subtitle1" marginRight={2}>
@@ -65,23 +50,14 @@ export const ListResult = ({
         className={focuse.isfocuse}
       >
         <Typography marginRight={1}>{formatMinSec(duration_ms)}</Typography>
-        <Button>+</Button>
+        <Button {...props}>+</Button>
       </AddBox>
     </Row>
   );
 };
 
-const CardBox = styled("div")`
-  position: relative;
-  flex: 1;
-  margin-right: 1rem;
-  height: 75%;
-  padding: 1rem;
-  border-radius: 8px;
-  :hover {
-    background-color: #272727;
-  }
-`;
+export default TrackListItem;
+
 const Row = styled("div")`
   position: relative;
   display: flex;
@@ -92,6 +68,9 @@ const Row = styled("div")`
   overflow: hidden;
   :hover {
     background-color: #272727;
+  }
+  &.select {
+    background-color: #2d2d2d;
   }
 `;
 const Title = styled(Typography)`

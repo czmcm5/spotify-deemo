@@ -1,8 +1,9 @@
-import { Box, styled, Typography } from "@mui/material";
-import MusicIcon from "../../../image/music.png";
+import { Box, styled } from "@mui/material";
+import { TrackSelectedProvider } from "../../../context/useTrackSelection";
 import { TrackObject } from "../../../models/tracks";
 import TrackInfinityList from "./TrackInfinityList";
-import { ListResult, TopResult } from "./TrackResult";
+import TrackResultList from "./TrackResultList";
+import TopResult from "./TrackTopResult";
 
 const TrackCardList = ({
   tracks,
@@ -10,39 +11,24 @@ const TrackCardList = ({
   isCurrentMenu,
 }: { tracks: TrackObject[] } & { pagenum: number; isCurrentMenu: boolean }) => {
   if (isCurrentMenu) {
-    return <TrackInfinityList tracks={tracks} pagenum={pagenum} />;
+    return (
+      <TrackSelectedProvider>
+        <TrackInfinityList tracks={tracks} pagenum={pagenum} />
+      </TrackSelectedProvider>
+    );
   }
 
   return (
     <TrackBox display={"flex"}>
-      <Box flex={1}>
-        <Typography variant="h1" padding={2} paddingTop={6}>
-          상위 결과
-        </Typography>
-        <TopResult
-          img={tracks[0].album.images?.[0]?.url || MusicIcon}
-          name={tracks[0].name}
-          albumName={tracks[0].album.name}
-        />
-      </Box>
-      <Box flex={1}>
-        <Typography variant="h1" padding={2} paddingTop={6}>
-          곡
-        </Typography>
+      <TopResult
+        img={tracks[0].album.images?.[0]?.url}
+        name={tracks[0].name}
+        albumName={tracks[0].album.name}
+      />
 
-        {tracks.map((item, i) => {
-          if (i > 3) return null;
-          return (
-            <ListResult
-              key={i}
-              img={item.album.images?.[0]?.url || MusicIcon}
-              name={item.name}
-              artistName={item.artists[0].name}
-              duration_ms={item.duration_ms}
-            />
-          );
-        })}
-      </Box>
+      <TrackSelectedProvider>
+        <TrackResultList tracks={tracks} />
+      </TrackSelectedProvider>
     </TrackBox>
   );
 };

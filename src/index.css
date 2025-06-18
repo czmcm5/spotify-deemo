@@ -16,3 +16,29 @@ img {
   -moz-user-drag: none;
   -o-user-drag: none;
 }
+
+/* 스크롤바 CSS */
+div::-webkit-scrollbar {
+  width: 6px;
+  transition: width 0.3s ease;
+  background: transparent;
+}
+div::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+div:hover::-webkit-scrollbar {
+  width: 6px;
+}
+div:hover::-webkit-scrollbar-thumb {
+  background: #474747;
+}
+
+input[type="checkBox"] {
+  display: none;
+}
+input[type="checkBox"]:checked {
+  display: block;
+  accent-color: #3adf32;
+}

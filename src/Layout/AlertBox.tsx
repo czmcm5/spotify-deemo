@@ -15,8 +15,9 @@ const MessageBox = styled(Box)`
   bottom: 2%;
   right: 2%;
   padding: 1rem 1.5rem;
-  color: #11da5b;
-  background-color: #3d3d3d;
+  font-size: 700;
+  background-color: #666666;
+  color: #12ea61;
   border-radius: 5px;
 
   transition: all 0.5s ease;

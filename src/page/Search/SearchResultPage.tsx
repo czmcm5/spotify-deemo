@@ -30,8 +30,4 @@ const ScrollBox = styled(Box)`
   flex-grow: 1;
   padding-bottom: 10rem;
   overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;

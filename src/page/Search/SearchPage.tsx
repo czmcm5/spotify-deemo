@@ -78,9 +78,6 @@ const List = styled("div")`
   padding-bottom: 10rem;
   overflow: auto;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
   @media screen and (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
   }

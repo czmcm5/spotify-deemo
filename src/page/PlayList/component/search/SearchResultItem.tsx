@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import ErrorMessage from "../../../../Layout/ErrorMessage";
 import useAddItemToPlaylist from "../../../../hook/useAddItemToPlaylist";
 import AuthExpiredMessage from "../AuthExpiredMessage";
+import { useOnSearchContext } from "../../../../context/OnSearchProvider";
 
 interface SearchAlbumProps {
   idx: number;
@@ -49,11 +50,12 @@ export const SearchResultTrack = ({
   // props drilling이 3번이나 일어나는건 별로같아서 따로뺐으나
   // 추후 context API로 수정해보기
   const { id: playlist_id } = useParams();
+  const { updateOnSearch } = useOnSearchContext();
   const {
     mutate: AddItemToPlaylist,
     isPending,
     error,
-  } = useAddItemToPlaylist();
+  } = useAddItemToPlaylist({ afterFn: () => updateOnSearch("off") });
 
   const handleAddItemToPlaylist = () => {
     if (isPending) return;
