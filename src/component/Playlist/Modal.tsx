@@ -1,5 +1,5 @@
 import { Box, Button, styled } from "@mui/material";
-import { RefObject, useState } from "react";
+import { RefObject, useEffect } from "react";
 import { useAlertMessage } from "../../context/AlertProvider";
 import { useTrackSelected } from "../../context/useTrackSelection";
 import useAddItemToPlaylist from "../../hook/useAddItemToPlaylist";
@@ -42,17 +42,31 @@ const PlaylistModal = ({
     selectPlaylist(null);
   };
 
-  if (!user) {
-    showAlert("로그인을 해주세요.");
-    return null;
-  }
-  if (error || ErrorToAddtoItem) {
-    const errMessage = error?.message || ErrorToAddtoItem?.message;
-    showAlert(errMessage || "실패");
-    return null;
-  }
-  if (!playlists?.pages || playlists.pages[0].total === 0) {
-    showAlert("내 플레이리스트가 없습니다.");
+  useEffect(() => {
+    if (!user) {
+      showAlert("로그인을 해주세요.", handleCloseModal);
+      return;
+    }
+
+    if (error || ErrorToAddtoItem) {
+      const errMessage = error?.message || ErrorToAddtoItem?.message;
+      showAlert(errMessage || "실패", handleCloseModal);
+      return;
+    }
+
+    if (playlists && (!playlists.pages || playlists.pages[0].total === 0)) {
+      showAlert("내 플레이리스트가 없습니다.", handleCloseModal);
+      return;
+    }
+  }, [user, error, ErrorToAddtoItem, playlists]);
+
+  if (
+    !user ||
+    error ||
+    ErrorToAddtoItem ||
+    !playlists?.pages ||
+    playlists.pages[0].total === 0
+  ) {
     return null;
   }
 

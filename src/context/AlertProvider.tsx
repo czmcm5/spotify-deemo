@@ -1,10 +1,15 @@
-import { ReactNode, useCallback, useContext, useState } from "react";
-import { createContext } from "react";
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useState,
+} from "react";
 
 interface AlertContextType {
   openAlert: "show" | "none";
   message: string;
-  showAlert: (text: string) => void;
+  showAlert: (text: string, afterFn?: () => void) => void;
 }
 
 const AlertContext = createContext<AlertContextType | undefined>(undefined);
@@ -17,11 +22,13 @@ export const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
   const [openAlert, setOpenAlert] = useState<"show" | "none">("none");
   const [message, setMessage] = useState("");
 
-  const showAlert = useCallback((text: string) => {
+  const showAlert = useCallback((text: string, afterFn?: () => void) => {
     setMessage(text);
     setOpenAlert("show");
+
     setTimeout(() => {
       setOpenAlert("none");
+      if (afterFn) afterFn();
     }, 2000);
   }, []);
 
@@ -30,6 +37,7 @@ export const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
     message,
     showAlert,
   };
+
   return (
     <AlertContext.Provider value={value}>{children}</AlertContext.Provider>
   );

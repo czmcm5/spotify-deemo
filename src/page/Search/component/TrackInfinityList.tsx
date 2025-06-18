@@ -25,9 +25,8 @@ const TrackInfinityList = ({
     <Box>
       {tracks.map((item, i) => {
         return (
-          <Box position={"relative"}>
+          <Box position={"relative"} key={i}>
             <TrackListItem
-              key={i}
               idx={countPageNum(20, pagenum, i)}
               img={item.album.images?.[0]?.url || MusicIcon}
               name={item.name}

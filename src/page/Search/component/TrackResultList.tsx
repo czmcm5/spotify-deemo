@@ -27,9 +27,8 @@ const TrackResultList = ({ tracks }: { tracks: TrackObject[] }) => {
       {tracks.map((item, i) => {
         if (i > 3) return null;
         return (
-          <Box position={"relative"}>
+          <Box position={"relative"} key={i}>
             <TrackListItem
-              key={i}
               img={item.album.images?.[0]?.url || MusicIcon}
               name={item.name}
               artistName={item.artists[0].name}
