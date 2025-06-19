@@ -12,7 +12,7 @@ const useGetPlaylistItem = (playlist_id: string) => {
 
       return getPlaylistItems_home({
         token: clientToken,
-        params: { playlist_id, limit: 6 },
+        params: { playlist_id, limit: 12 },
       });
     },
   });
