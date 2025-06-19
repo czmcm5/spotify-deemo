@@ -24,14 +24,14 @@ const DetailHeader = ({ playlist, onSearch }: PlaylistDetail) => {
   return (
     <PlayListHeader>
       <PicBox>
-        <img src={image} />
+        <img src={image} alt="thumbnail" />
       </PicBox>
 
       <div>
         <ListName>{listName}</ListName>
         <div>{description}</div>
         <InfoBox>
-          <img src={FackLogo} />
+          <img src={FackLogo} alt="fake-logo" />
           <span>{ownerName}</span>
           <span>•</span>
           <span>{count}곡</span>

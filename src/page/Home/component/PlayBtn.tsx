@@ -4,7 +4,7 @@ import PlayArrow from "../../../image/playArrow.png";
 const PlayBtn = ({ isfocuse }: { isfocuse: "show" | "none" }) => {
   return (
     <Btn className={isfocuse}>
-      <img src={PlayArrow} />
+      <img src={PlayArrow} alt="재생버튼" />
     </Btn>
   );
 };

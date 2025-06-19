@@ -1,4 +1,4 @@
-import { isAxiosError } from "axios";
+import axios, { isAxiosError } from "axios";
 import {
   AddItemToPlaylist,
   CreatePlaylist,
@@ -10,6 +10,7 @@ import {
   Playlist,
 } from "../models/playlist";
 import api from "./__baseAIP";
+import { SPOTIFY_BASE_URL } from "../configs/commonConfig";
 
 export const getCurrentUserPlaylists = async ({
   limit,
@@ -35,6 +36,7 @@ export const getPlaylist = async (
     });
     return res.data;
   } catch (err) {
+    console.log(err);
     if (isAxiosError(err) && err.response?.status === 401)
       throw new Error("retry"); // 로그인 다시
     throw new Error("fail getPlaylist");
@@ -87,5 +89,31 @@ export const addItemstoPlaylist = async (
     if (isAxiosError(err) && err.response?.status === 401)
       throw new Error("retry"); // 로그인 다시
     throw new Error("fail add item to playlist");
+  }
+};
+
+/** 기존거에서 acToken -> clientToken 순으로 검사해서 토큰 전달하는걸로 수정바람 */
+export const getPlaylistItems_home = async ({
+  token,
+  params,
+}: {
+  token: string;
+  params: GetPlaylistItemsReq;
+}): Promise<GetPlaylistItemsRes> => {
+  try {
+    const res = await axios.get(
+      `${SPOTIFY_BASE_URL}/playlists/${params.playlist_id}/tracks`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        params,
+      }
+    );
+
+    return res.data;
+  } catch (err) {
+    throw new Error("fail getPlaylistItems");
   }
 };
