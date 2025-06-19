@@ -1,9 +1,15 @@
 import { styled } from "@mui/material";
 import PlayArrow from "../../../image/playArrow.png";
 
-const PlayBtn = ({ isfocuse }: { isfocuse: "show" | "none" }) => {
+const PlayBtn = ({
+  isfocuse,
+  ...props
+}: {
+  isfocuse: "show" | "none";
+  onClick?: () => void;
+}) => {
   return (
-    <Btn className={isfocuse}>
+    <Btn className={isfocuse} {...props}>
       <img src={PlayArrow} alt="재생버튼" />
     </Btn>
   );

@@ -2,25 +2,36 @@ import { styled, Typography } from "@mui/material";
 import useFouces from "../../../hook/local/useFocuse";
 import MusicIcon from "../../../image/music.png";
 import PlayBtn from "./PlayBtn";
+import { goSpotify } from "../../../utils/navigate";
 
 interface CardBasicProps {
   imgUrl?: string;
   mainTitle?: string;
   subTitle?: string;
+  type?: string;
+  id?: string;
 }
 
-const Card_basic = ({
+const CardBoxBasic = ({
   imgUrl = MusicIcon,
   mainTitle = "",
   subTitle = "",
+  type,
+  id,
 }: CardBasicProps) => {
   const focuse = useFouces();
+
+  const handleGoSpotifyWeb = () => {
+    if (type && id) {
+      goSpotify({ type, id });
+    }
+  };
 
   return (
     <CardBox onMouseOver={focuse.on} onMouseLeave={focuse.off}>
       <PicBox>
         <img src={imgUrl} alt={mainTitle} className="Thumbnail" />
-        <PlayBtn isfocuse={focuse.isfocuse} />
+        <PlayBtn isfocuse={focuse.isfocuse} onClick={handleGoSpotifyWeb} />
       </PicBox>
 
       <Title>{mainTitle}</Title>
@@ -29,7 +40,7 @@ const Card_basic = ({
   );
 };
 
-export default Card_basic;
+export default CardBoxBasic;
 
 const CardBox = styled("div")`
   flex: 1;

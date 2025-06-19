@@ -27,6 +27,8 @@ const RecommendTrakcs = ({ playlist_id }: { playlist_id: string }) => {
             imgUrl={imageSrc}
             mainTitle={item.track.name}
             subTitle={artistName}
+            type={item.track.type}
+            id={item.track.id}
           />
         );
       })}

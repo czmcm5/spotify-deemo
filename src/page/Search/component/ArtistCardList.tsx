@@ -3,9 +3,17 @@ import { ArtistsType } from "../../../models/artist";
 import PlayBtn from "../../Home/component/PlayBtn";
 import useFouces from "../../../hook/local/useFocuse";
 import MusicIcon from "../../../image/music.png";
+import { goSpotify } from "../../../utils/navigate";
 
 const ArtistCardList = ({ artists }: { artists: ArtistsType }) => {
   const focuse = useFouces();
+
+  const handleGoSpotifyWeb = () => {
+    if (artists.id) {
+      goSpotify({ type: "artist", id: artists.id });
+    }
+  };
+
   return (
     <CardBox onMouseOver={focuse.on} onMouseLeave={focuse.off}>
       <PicBox>
@@ -14,7 +22,7 @@ const ArtistCardList = ({ artists }: { artists: ArtistsType }) => {
           alt={artists.name}
           className="Thumbnail"
         />
-        <PlayBtn isfocuse={focuse.isfocuse} />
+        <PlayBtn isfocuse={focuse.isfocuse} onClick={handleGoSpotifyWeb} />
       </PicBox>
 
       <Title>{artists.name}</Title>

@@ -2,9 +2,14 @@ import { styled, Typography } from "@mui/material";
 import useFouces from "../../../hook/local/useFocuse";
 import { AlbumItemType } from "../../../models/album";
 import PlayBtn from "./PlayBtn";
+import { goSpotify } from "../../../utils/navigate";
 
 const CardList = ({ albums }: { albums: AlbumItemType }) => {
   const focuse = useFouces();
+
+  const handleGoSpotifyWeb = () => {
+    goSpotify({ type: "album", id: albums.id });
+  };
 
   return (
     <CardBox onMouseOver={focuse.on} onMouseLeave={focuse.off}>
@@ -14,7 +19,7 @@ const CardList = ({ albums }: { albums: AlbumItemType }) => {
           alt={albums.name}
           className="Thumbnail"
         />
-        <PlayBtn isfocuse={focuse.isfocuse} />
+        <PlayBtn isfocuse={focuse.isfocuse} onClick={handleGoSpotifyWeb} />
       </PicBox>
 
       <Title>{albums.name}</Title>
