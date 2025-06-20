@@ -54,7 +54,7 @@ const PageContainer = styled("div")`
   max-height: 100%;
   overflow: hidden;
 `;
-const SiderBar = styled("div")<{ flex?: number }>`
+const SiderBar = styled("div")`
   flex: 1;
   display: flex;
   flex-direction: column;

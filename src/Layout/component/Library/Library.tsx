@@ -9,7 +9,7 @@ import EmptyPlayList from "./EmptyPlayList";
 import PlaylistItem from "./PlaylistItem";
 import { useNavigate, useParams } from "react-router";
 
-const Library = () => {
+const Library = ({ isMoblie }: { isMoblie?: boolean }) => {
   const Navigate = useNavigate();
   const { id = "" } = useParams();
 
@@ -28,7 +28,7 @@ const Library = () => {
 
   // 커스텀 무한 스크롤
   useInfiniteScroll({
-    page: "library",
+    page: isMoblie ? "library-mobile" : "library",
     isLoading: isFetchingNextPage,
     isFinished: !hasNextPage,
     onIntersect: fetchNextPage,
@@ -62,7 +62,9 @@ const Library = () => {
       )}
 
       <LoadState isLoading={isFetchingNextPage} isFinished={!hasNextPage} />
-      {!isFetchingNextPage && <Observer id="observer-library" />}
+      {!isFetchingNextPage && (
+        <Observer id={`observer-${isMoblie ? "library-mobile" : "library"}`} />
+      )}
     </ListBox>
   );
 };
