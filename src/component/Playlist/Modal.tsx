@@ -119,6 +119,14 @@ const ModalBox = styled("div")`
   background-color: #1d1d1d;
   border: 1px solid #101010;
   border-radius: 4px;
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    top: 100%;
+    width: 15rem;
+    height: 20rem;
+    padding: 0.5rem;
+    margin: 0;
+  }
 `;
 const ScrollBox = styled("div")`
   flex: 1;

@@ -1,6 +1,7 @@
 import { Box, styled, Typography } from "@mui/material";
 import { SimplifiedPlaylist } from "../../models/playlist";
 import MusicIcon from "../../image/music.png";
+import theme from "../../style/theme";
 
 const ModalListItem = ({
   item,
@@ -21,7 +22,7 @@ const ModalListItem = ({
             alt="music_섬네일"
           />
         </PicBox>
-        <Typography fontSize={16}>{item.name}</Typography>
+        <Typography>{item.name}</Typography>
       </Box>
 
       <input type="checkbox" checked={isSelect} readOnly />
@@ -35,7 +36,7 @@ const ItemBox = styled("div")`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem;
+  padding: 0.5rem;
   border-radius: 4px;
 
   &.select {
@@ -65,5 +66,9 @@ const PicBox = styled("div")`
   img.musicIcon {
     width: 70%;
     height: 70%;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    margin-right: 0.5rem;
   }
 `;
