@@ -40,16 +40,14 @@ const Container = styled("div")`
   background-color: #121212;
   border-radius: 8px;
 `;
-
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 20px;
-  color: #adadad;
-
+  color: #808080;
   img {
-    opacity: 0.5;
+    opacity: 0.3;
   }
   &:hover,
   &.active {

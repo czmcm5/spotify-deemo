@@ -31,14 +31,15 @@ const Container = styled("div")`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 1rem;
   height: 3rem;
-  margin-bottom: 8px;
+  padding: 0 1rem;
   color: white;
   border-radius: 8px;
 `;
-
 const Logo = styled("img")`
   width: 2.2rem;
   cursor: pointer;
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    width: 0;
+  }
 `;

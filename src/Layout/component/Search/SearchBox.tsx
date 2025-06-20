@@ -17,8 +17,9 @@ export default SearchBox;
 const SearchInput = styled("input")`
   box-sizing: border-box;
   width: 100%;
+  margin: 0 1rem;
   max-width: 25rem;
-  height: 3rem;
+  height: 2.5rem;
   padding: 1rem;
   font-size: 16px;
   color: white;

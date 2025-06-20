@@ -34,5 +34,5 @@ export default HomePage;
 const ScrollBox = styled("div")`
   max-height: 100%;
   overflow: scroll;
-  padding-bottom: 10rem;
+  padding-bottom: 5rem;
 `;

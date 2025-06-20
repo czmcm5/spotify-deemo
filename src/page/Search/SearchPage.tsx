@@ -75,7 +75,7 @@ const List = styled("div")`
   max-height: 100%;
   gap: 1.5rem;
   padding: 1rem;
-  padding-bottom: 10rem;
+  padding-bottom: 8rem;
   overflow: auto;
 
   @media screen and (max-width: 1200px) {

@@ -10,6 +10,9 @@ body {
   padding: 0;
   overflow: hidden;
 }
+body::-webkit-scrollbar-thumb {
+  display: none;
+}
 img {
   -webkit-user-drag: none;
   -khtml-user-drag: none;

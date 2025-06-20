@@ -6,6 +6,7 @@ import LibraryHead from "./component/Library/LibraryHead";
 import NavBox from "./component/NavBox";
 import Topbar from "./component/Topbar";
 import { AlertProvider } from "../context/AlertProvider";
+import MobileNavibar from "./component/MobileNavibar";
 
 const AppLayout = () => {
   return (
@@ -30,6 +31,8 @@ const AppLayout = () => {
           <AlertBox />
         </AlertProvider>
       </PageContainer>
+
+      <MobileNavibar />
     </Layout>
   );
 };
@@ -39,13 +42,17 @@ const Layout = styled("div")`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   padding: 8px;
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    padding-bottom: 0;
+  }
 `;
 const PageContainer = styled("div")`
   display: flex;
   flex: 1;
-  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
 `;
 const SiderBar = styled("div")<{ flex?: number }>`
   flex: 1;
@@ -55,23 +62,23 @@ const SiderBar = styled("div")<{ flex?: number }>`
   max-width: 26rem;
   height: 100%;
   margin-right: 8px;
-
   ${({ theme }) => theme.breakpoints.down("sm")} {
     display: none;
   }
 `;
 const LibraryBox = styled("div")<{ flex?: number }>`
+  box-sizing: border-box;
   flex: 1;
   width: 100%;
-  height: 100%;
   padding: 0.5rem;
+  margin: 0px 8px;
   color: white;
   background-color: #121212;
   border-radius: 8px;
   overflow: hidden;
 `;
 const MainContent = styled("div")`
-  flex: 3;
+  flex: 1;
   height: 100%;
   background: linear-gradient(to bottom, #252525, #121212 30%);
   border-radius: 8px;
