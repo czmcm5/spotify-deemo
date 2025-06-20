@@ -1,14 +1,16 @@
 import { styled } from "@mui/material";
-import { Outlet } from "react-router";
+import { Outlet, useLocation, useParams } from "react-router";
+import { AlertProvider } from "../context/AlertProvider";
 import AlertBox from "./AlertBox";
 import Library from "./component/Library/Library";
 import LibraryHead from "./component/Library/LibraryHead";
+import MobileNavibar from "./component/MobileNavibar";
 import NavBox from "./component/NavBox";
 import Topbar from "./component/Topbar";
-import { AlertProvider } from "../context/AlertProvider";
-import MobileNavibar from "./component/MobileNavibar";
 
 const AppLayout = () => {
+  const { pathname } = useLocation();
+
   return (
     <Layout>
       <Topbar />
@@ -16,11 +18,12 @@ const AppLayout = () => {
       <PageContainer>
         <SiderBar>
           <NavBox />
-
-          <LibraryBox>
-            <LibraryHead />
-            <Library />
-          </LibraryBox>
+          {pathname !== "/playlist" && (
+            <LibraryBox>
+              <LibraryHead />
+              <Library />
+            </LibraryBox>
+          )}
         </SiderBar>
 
         <AlertProvider>
