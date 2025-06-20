@@ -71,7 +71,6 @@ const LibraryBox = styled("div")<{ flex?: number }>`
   flex: 1;
   width: 100%;
   padding: 0.5rem;
-  margin: 0px 8px;
   color: white;
   background-color: #121212;
   border-radius: 8px;

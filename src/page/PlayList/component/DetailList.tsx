@@ -41,7 +41,7 @@ const DetailList = ({ id }: { id: string }) => {
   return (
     <Container>
       <Table stickyHeader sx={{ borderCollapse: "collapse" }}>
-        <TableHead>
+        <Header>
           <TableRow>
             <TableCell>#</TableCell>
             <TableCell colSpan={2}>제목</TableCell>
@@ -49,7 +49,7 @@ const DetailList = ({ id }: { id: string }) => {
             <Cell>추가한 날짜</Cell>
             <TableCell>시간</TableCell>
           </TableRow>
-        </TableHead>
+        </Header>
 
         <TableBody>
           {playlistItems?.pages.map((page, PIdx) =>
@@ -77,6 +77,11 @@ const Container = styled(TableContainer)`
   padding-bottom: 5rem;
   overflow: auto;
   overflow-x: hidden;
+`;
+const Header = styled(TableHead)`
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    display: none;
+  }
 `;
 const Cell = styled(TableCell)`
   ${({ theme }) => theme.breakpoints.down("md")} {

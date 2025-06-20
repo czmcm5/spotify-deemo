@@ -6,10 +6,6 @@ import useRendomColor from "../../../hook/local/useRendomColor";
 import ProfileIcon from "../../../image/profileIcon.png";
 import ProfileModal from "./ProfileModal";
 
-const ProfileImage = ({ imageUrl }: { imageUrl: string }) => {
-  return <Icon src={imageUrl} alt="프로필 아이콘" />;
-};
-
 const Profile = () => {
   const { data: userProfile } = useGetProfile();
   const { colorCode, getRandomCode } = useRendomColor();
@@ -20,9 +16,9 @@ const Profile = () => {
 
   return (
     <Container onClick={open_modal}>
-      <ProfileBox haveImgUrl={!!imageUrl} code={colorCode}>
-        <ProfileImage imageUrl={imageUrl || ProfileIcon} />
-      </ProfileBox>
+      <PicBox haveImgUrl={!!imageUrl} code={colorCode}>
+        <img src={imageUrl || ProfileIcon} alt="프로필 아이콘" />
+      </PicBox>
 
       <ProfileModal
         isOpen={open}
@@ -38,21 +34,22 @@ export default Profile;
 const Container = styled("div")`
   position: relative;
 `;
-const ProfileBox = styled("div")<{ haveImgUrl: boolean; code: string }>`
+const PicBox = styled("div")<{ haveImgUrl: boolean; code: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.4rem;
+  width: 2.5rem;
   aspect-ratio: 1/1;
   background-color: ${({ code }) => code};
   border-radius: 50px;
-  border: 8px solid;
+  border: 4px solid;
   border-color: ${({ haveImgUrl, code }) => (haveImgUrl ? code : "#1f1f1f")};
   overflow: hidden;
   cursor: pointer;
-`;
-const Icon = styled("img")`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;

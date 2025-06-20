@@ -14,7 +14,6 @@ const DetailHeader = ({ playlist, onSearch }: PlaylistDetail) => {
 
   const image = playlist?.images ? playlist?.images[0].url : MusicIcon;
   const listName = playlist?.name || "";
-  const description = playlist?.description || "";
   const ownerName = playlist?.owner?.display_name || "알수없음";
   const count = playlist?.tracks?.items.length || 0;
 
@@ -29,7 +28,6 @@ const DetailHeader = ({ playlist, onSearch }: PlaylistDetail) => {
 
       <div>
         <ListName>{listName}</ListName>
-        <div>{description}</div>
         <InfoBox>
           <img src={FackLogo} alt="fake-logo" />
           <span>{ownerName}</span>
@@ -57,6 +55,10 @@ const PlayListHeader = styled("div")`
   height: 18rem;
   padding: 2rem 2rem 0 2rem;
   background: linear-gradient(to bottom, #424242, #222222 90%);
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    height: 10rem;
+    padding: 0 2rem;
+  }
 `;
 const PicBox = styled("div")`
   display: flex;
@@ -76,11 +78,15 @@ const PicBox = styled("div")`
   img.Thumbnail {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: none;
   }
 
   ${({ theme }) => theme.breakpoints.down("md")} {
     max-width: 13rem;
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    max-width: 6rem;
+    margin-right: 1rem;
   }
 `;
 const ListName = styled("div")`
@@ -96,7 +102,9 @@ const ListName = styled("div")`
     font-size: 40px;
   }
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    font-size: 30px;
+    font-size: 24px;
+    min-height: 2rem;
+    -webkit-line-clamp: 1;
   }
 `;
 const InfoBox = styled("div")`
@@ -108,5 +116,11 @@ const InfoBox = styled("div")`
   }
   span {
     margin-left: 5px;
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    font-size: 10px;
+    img {
+      width: 14px;
+    }
   }
 `;

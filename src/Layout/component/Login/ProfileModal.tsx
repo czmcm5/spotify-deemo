@@ -31,6 +31,7 @@ const ProfileModal = ({ isOpen, itemRef, changeColorCode }: ModalProps) => {
 export default ProfileModal;
 
 const ModalBox = styled("div")`
+  z-index: 20;
   position: absolute;
   right: -30%;
   top: 110%;

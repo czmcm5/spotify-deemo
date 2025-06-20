@@ -16,19 +16,30 @@ const DesktopPlaylistItems = ({ item, idx }: ItemsPropsType) => {
 
   return (
     <Row>
-      <Cell>{idx}</Cell>
+      <Cell className="idx">{idx}</Cell>
+
       <Cell>
         <PicBox>
           <img src={imageSrc || MusicIcon} alt="track-thumbnail" />
         </PicBox>
       </Cell>
+
       <Cell>
         <div className="title">{item.track.name || "no title"}</div>
-        <div>{isEpisode(item.track) ? "" : item.track.artists[0].name}</div>
+        <div className="artist">
+          {isEpisode(item.track) ? "" : item.track.artists[0].name}
+        </div>
       </Cell>
-      <Cell>{isEpisode(item.track) ? "-" : item.track.album?.name}</Cell>
+
+      <Cell className="album">
+        {isEpisode(item.track) ? "-" : item.track.album?.name}
+      </Cell>
+
       <Cell className="added_at">{getDaysAgo(item.added_at || null)}</Cell>
-      <Cell>{formatMinSec(item.track.duration_ms)}</Cell>
+
+      <Cell className="duration_ms">
+        {formatMinSec(item.track.duration_ms)}
+      </Cell>
     </Row>
   );
 };
@@ -49,13 +60,27 @@ const Cell = styled(TableCell)`
     font-size: 16px;
     color: #858585;
   }
-  &.added_at {
-    ${({ theme }) => theme.breakpoints.down("md")} {
+  .title,
+  &.duration_ms {
+    color: white;
+  }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    &.added_at {
       display: none;
     }
   }
-  .title {
-    color: white;
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    padding: 0.4rem;
+    && {
+      font-size: 14px;
+    }
+    &.idx,
+    .artist {
+      font-size: 10px;
+    }
+    &.album {
+      display: none;
+    }
   }
 `;
 const PicBox = styled("div")`

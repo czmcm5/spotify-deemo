@@ -14,6 +14,7 @@ const SearchPlaylist = () => {
         <Typography variant="h1">
           플레이리스트에 추가할 곡을 찾아보세요
         </Typography>
+
         <SearchTypeSelect
           value={searchType.value}
           onChange={searchType.onchange}
@@ -50,6 +51,11 @@ const SearchBox = styled(Box)`
 const SearchBoxHeader = styled(Box)`
   flex-shrink: 0;
   padding: 1rem;
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    h1 {
+      font-size: 18px;
+    }
+  }
 `;
 const SearchBoxScroll = styled(Box)`
   flex-grow: 1;
@@ -73,11 +79,16 @@ const SearchTypeSelect = styled("select")`
   &:focus {
     border-color: #b1b1b1;
   }
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    padding: 0.5rem;
+    font-size: 14px;
+  }
 `;
 const SearchInput = styled("input")`
   box-sizing: border-box;
   width: 100%;
-  max-width: 23rem;
+  max-width: 19rem;
   height: 3rem;
   padding: 0.7rem;
   margin: 1rem 0;
@@ -92,5 +103,9 @@ const SearchInput = styled("input")`
   }
   &:focus {
     border-color: #b1b1b1;
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    max-width: 14rem;
+    font-size: 14px;
   }
 `;
