@@ -1,18 +1,22 @@
 import styled from "@mui/styled-engine-sc";
+import { useNavigate, useParams } from "react-router";
+import useInfiniteScroll from "../../../hook/useInfiniteScroll";
 import useGetCurrentUserPlaylists from "../../../query/useGetCurrentUserPlaylists";
 import useGetProfile from "../../../query/useGetProfile";
-import useInfiniteScroll from "../../../hook/useInfiniteScroll";
-import LoadingBar from "../../../style/LoadingBar";
-import ErrorMessage from "../../ErrorMessage";
+import DataStateRender from "../../../share/ui/DataStateRender";
 import LoadState, { Observer } from "../../../style/LodingBox";
 import EmptyPlayList from "./EmptyPlayList";
 import PlaylistItem from "./PlaylistItem";
-import { useNavigate, useParams } from "react-router";
 
-const Library = ({ isMoblie }: { isMoblie?: boolean }) => {
+// 상수 분리
+const LiBRARY_PAGE_NAME = {
+  mobile: "library-mobile",
+  desktop: "library",
+};
+
+const Library = ({ isMobile }: { isMobile?: boolean }) => {
   const Navigate = useNavigate();
   const { id = "" } = useParams();
-
   const { data: user } = useGetProfile();
   const {
     data,
@@ -22,13 +26,16 @@ const Library = ({ isMoblie }: { isMoblie?: boolean }) => {
     fetchNextPage, // 다음페이지 가져오는 함수
     isFetchingNextPage, // 다음페이지 가져오는 중인지? : boolean
   } = useGetCurrentUserPlaylists({
-    limit: 10,
     enabled: !!user, // user가 있을 때만 실행
   });
 
   // 커스텀 무한 스크롤
+  const pageName = isMobile
+    ? LiBRARY_PAGE_NAME.mobile
+    : LiBRARY_PAGE_NAME.desktop;
+
   useInfiniteScroll({
-    page: isMoblie ? "library-mobile" : "library",
+    page: pageName,
     isLoading: isFetchingNextPage,
     isFinished: !hasNextPage,
     onIntersect: fetchNextPage,
@@ -36,21 +43,18 @@ const Library = ({ isMoblie }: { isMoblie?: boolean }) => {
 
   const goPlaylistDetail = (id: string) => Navigate(`/playlist/${id}`);
 
-  if (!user) {
-    return <EmptyPlayList />;
-  }
-  if (isLoading) {
-    return <LoadingBar />;
-  }
-  if (error) {
-    return <ErrorMessage errMessage={error.message} />;
-  }
-  if (!data?.pages || data.pages[0].total === 0) {
-    return <EmptyPlayList />;
-  }
+  const stateComponent = DataStateRender({
+    isEmpty: !user || !data?.pages || data.pages[0].total === 0,
+    EmptyComponet: EmptyPlayList,
+    isLoading: isLoading,
+    isError: error,
+  });
+
+  if (stateComponent) return stateComponent;
+
   return (
     <ListBox>
-      {data.pages.map((page) =>
+      {data?.pages.map((page) =>
         page.items.map((item, idx) => (
           <PlaylistItem
             key={idx}
@@ -62,9 +66,7 @@ const Library = ({ isMoblie }: { isMoblie?: boolean }) => {
       )}
 
       <LoadState isLoading={isFetchingNextPage} isFinished={!hasNextPage} />
-      {!isFetchingNextPage && (
-        <Observer id={`observer-${isMoblie ? "library-mobile" : "library"}`} />
-      )}
+      {!isFetchingNextPage && <Observer id={`observer-${pageName}`} />}
     </ListBox>
   );
 };
