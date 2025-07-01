@@ -4,7 +4,7 @@ import {
   OnSearchProvider,
   useOnSearchContext,
 } from "../../context/OnSearchProvider";
-import useGetPlaylist from "../../hook/useGetPlaylist";
+import useGetPlaylist from "../../query/useGetPlaylist";
 import ErrorMessage from "../../Layout/ErrorMessage";
 import AuthExpiredMessage from "./component/AuthExpiredMessage";
 import DetailHeader from "./component/DetailHeader";

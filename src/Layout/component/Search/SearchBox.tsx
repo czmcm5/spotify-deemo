@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import useMoveSearchUrl from "../../../hook/local/useMoveSearchUrl";
+import useMoveSearchUrl from "../../../hook/useMoveSearchUrl";
 
 const SearchBox = () => {
   const { keyword, updateKeyword } = useMoveSearchUrl();

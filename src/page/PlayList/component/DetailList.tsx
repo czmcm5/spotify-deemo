@@ -7,8 +7,8 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import useGetPlaylistItem from "../../../hook/useGetPlaylistItem";
-import useInfiniteScroll from "../../../hook/local/useInfiniteScroll";
+import useGetPlaylistItem from "../../../query/useGetPlaylistItem";
+import useInfiniteScroll from "../../../hook/useInfiniteScroll";
 import ErrorMessage from "../../../Layout/ErrorMessage";
 import LoadingBar from "../../../style/LoadingBar";
 import LoadState, { Observer } from "../../../style/LodingBox";

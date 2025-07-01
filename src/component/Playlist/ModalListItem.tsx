@@ -1,7 +1,6 @@
 import { Box, styled, Typography } from "@mui/material";
 import { SimplifiedPlaylist } from "../../models/playlist";
 import MusicIcon from "../../image/music.png";
-import theme from "../../style/theme";
 
 const ModalListItem = ({
   item,

@@ -1,7 +1,7 @@
 import { Button, styled, TableCell, TableRow } from "@mui/material";
 import { useParams } from "react-router";
 import ErrorMessage from "../../../../Layout/ErrorMessage";
-import useAddItemToPlaylist from "../../../../hook/useAddItemToPlaylist";
+import useAddItemToPlaylist from "../../../../query/useAddItemToPlaylist";
 import AuthExpiredMessage from "../AuthExpiredMessage";
 import { useOnSearchContext } from "../../../../context/OnSearchProvider";
 

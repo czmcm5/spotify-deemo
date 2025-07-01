@@ -1,6 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { Box, styled } from "@mui/system";
-import useFouces from "../../../hook/local/useFocuse";
+import useFouces from "../../../hook/useFocuse";
 import { formatMinSec } from "../../../utils/playlist";
 
 interface CardProps {

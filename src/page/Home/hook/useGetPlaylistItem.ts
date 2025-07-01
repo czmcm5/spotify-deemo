@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPlaylistItems_home } from "../../../api/playlist";
-import useGetSpoAccessToken from "../../../hook/useGetSpoAccessToken";
+import useGetSpoAccessToken from "../../../query/useGetSpoAccessToken";
 
 const useGetPlaylistItem = (playlist_id: string) => {
   const clientToken = useGetSpoAccessToken();

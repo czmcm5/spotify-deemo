@@ -1,7 +1,7 @@
 import { Box, Button, styled, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import BookmarkIcon from "../../../image/BookmarkIcon.png";
-import useCreatePlaylist from "../../../hook/useCreatePlaylist";
+import useCreatePlaylist from "../../../query/useCreatePlaylist";
 
 const LibraryHead = () => {
   const { mutate: createPlaylist } = useCreatePlaylist();

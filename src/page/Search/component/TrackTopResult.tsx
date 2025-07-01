@@ -1,5 +1,5 @@
 import { Box, styled, Typography } from "@mui/material";
-import useFouces from "../../../hook/local/useFocuse";
+import useFouces from "../../../hook/useFocuse";
 import PlayBtn from "../../Home/component/PlayBtn";
 import MusicIcon from "../../../image/music.png";
 

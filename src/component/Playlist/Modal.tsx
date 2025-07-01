@@ -2,9 +2,9 @@ import { Box, Button, styled } from "@mui/material";
 import { RefObject, useEffect } from "react";
 import { useAlertMessage } from "../../context/AlertProvider";
 import { useTrackSelected } from "../../context/useTrackSelection";
-import useAddItemToPlaylist from "../../hook/useAddItemToPlaylist";
-import useGetCurrentUserPlaylists from "../../hook/useGetCurrentUserPlaylists";
-import useGetProfile from "../../hook/useGetProfile";
+import useAddItemToPlaylist from "../../query/useAddItemToPlaylist";
+import useGetCurrentUserPlaylists from "../../query/useGetCurrentUserPlaylists";
+import useGetProfile from "../../query/useGetProfile";
 import ModalListItem from "./ModalListItem";
 
 const PlaylistModal = ({

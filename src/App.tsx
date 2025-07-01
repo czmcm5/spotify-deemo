@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router";
-import useExchangeToken from "./hook/useExchangeToken";
+import useExchangeToken from "./query/useExchangeToken";
 import LoadingBar from "./style/LoadingBar";
 
 const AppLayout = React.lazy(() => import("./Layout/AppLayout"));

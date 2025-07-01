@@ -1,4 +1,4 @@
-import useGetNewReleases from "../../../hook/useGetNewReleases";
+import useGetNewReleases from "../../../query/useGetNewReleases";
 import ErrorMessage from "../../../Layout/ErrorMessage";
 import { CardGridList } from "../../../style/CardStyled";
 import LoadingBar from "../../../style/LoadingBar";

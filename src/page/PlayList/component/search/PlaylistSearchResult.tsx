@@ -1,7 +1,7 @@
 import { styled, Table, TableBody } from "@mui/material";
 import { searchConfig } from "../../../../configs/search";
-import useInfiniteScroll from "../../../../hook/local/useInfiniteScroll";
-import useSearchitems from "../../../../hook/useSearchitems";
+import useInfiniteScroll from "../../../../hook/useInfiniteScroll";
+import useSearchitems from "../../../../query/useSearchitems";
 import ErrorMessage from "../../../../Layout/ErrorMessage";
 import { SEARCH_TYPE, SearchRes } from "../../../../models/search";
 import { LoadingSpinner } from "../../../../style/LoadingBar";

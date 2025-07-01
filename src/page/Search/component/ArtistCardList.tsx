@@ -1,7 +1,7 @@
 import { styled, Typography } from "@mui/material";
 import { ArtistsType } from "../../../models/artist";
 import PlayBtn from "../../Home/component/PlayBtn";
-import useFouces from "../../../hook/local/useFocuse";
+import useFouces from "../../../hook/useFocuse";
 import MusicIcon from "../../../image/music.png";
 import { goSpotify } from "../../../utils/navigate";
 

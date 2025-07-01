@@ -1,9 +1,9 @@
 import { styled, Typography } from "@mui/material";
 import ErrorMessage from "../../Layout/ErrorMessage";
-import useGetSeveralCategory from "../../hook/useGetSeveralCategory";
+import useGetSeveralCategory from "../../query/useGetSeveralCategory";
 import LoadingBar from "../../style/LoadingBar";
 import { getBgolor } from "../../utils/category";
-import useInfiniteScroll from "../../hook/local/useInfiniteScroll";
+import useInfiniteScroll from "../../hook/useInfiniteScroll";
 import LoadState, { Observer } from "../../style/LodingBox";
 import CategoryItemBox from "./component/CategoryItem";
 import { useNavigate } from "react-router";

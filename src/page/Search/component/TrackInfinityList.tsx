@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import PlaylistModal from "../../../component/Playlist/Modal";
 import { useTrackSelected } from "../../../context/useTrackSelection";
-import useOutsideClick from "../../../hook/local/useOutsideClick";
+import useOutsideClick from "../../../hook/useOutsideClick";
 import MusicIcon from "../../../image/music.png";
 import { TrackObject } from "../../../models/tracks";
 import { countPageNum } from "../../../utils/playlist";

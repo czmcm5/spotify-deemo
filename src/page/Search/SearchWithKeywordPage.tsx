@@ -1,7 +1,7 @@
 import { styled, Typography } from "@mui/material";
 import { useSearchFilterContext } from "../../context/SearchFilterProvider";
-import useInfiniteScroll from "../../hook/local/useInfiniteScroll";
-import useSearchitems from "../../hook/useSearchitems";
+import useInfiniteScroll from "../../hook/useInfiniteScroll";
+import useSearchitems from "../../query/useSearchitems";
 import ErrorMessage from "../../Layout/ErrorMessage";
 import { LoadingSpinner } from "../../style/LoadingBar";
 import LoadState, { Observer } from "../../style/LodingBox";
