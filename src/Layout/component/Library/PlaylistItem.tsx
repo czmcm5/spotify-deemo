@@ -6,18 +6,18 @@ import { SimplifiedPlaylist } from "../../../models/playlist";
 
 const Playlist = ({
   item,
-  onClick,
   isSelect,
+  ...props
 }: {
   item: SimplifiedPlaylist;
-  onClick: () => void;
   isSelect: boolean;
+  onClick: () => void;
 }) => {
   const focuse = useFouces();
 
   return (
     <ItemBox
-      onClick={onClick}
+      {...props}
       className={isSelect ? "select" : ""}
       onMouseOver={focuse.on}
       onMouseLeave={focuse.off}
@@ -26,9 +26,9 @@ const Playlist = ({
         <PlayIcon src={playIcon} className={focuse.isfocuse} />
 
         {item.images ? (
-          <img src={item.images[0].url} />
+          <img src={item.images[0].url} alt={"썸네일"} />
         ) : (
-          <img className="musicIcon" src={MusicIcon} />
+          <img className="musicIcon" src={MusicIcon} alt="음악 아이콘" />
         )}
       </PicBox>
 

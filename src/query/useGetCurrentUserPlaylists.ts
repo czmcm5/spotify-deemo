@@ -3,7 +3,7 @@ import { getCurrentUserPlaylists } from "../api/playlist";
 import { GetCurrentUserPlaylistReq } from "../models/playlist";
 
 const useGetCurrentUserPlaylists = ({
-  limit,
+  limit = 10,
   enabled,
 }: GetCurrentUserPlaylistReq & { enabled: boolean }) => {
   return useInfiniteQuery({
