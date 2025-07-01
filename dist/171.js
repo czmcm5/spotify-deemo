@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkspotify_deemo=self.webpackChunkspotify_deemo||[]).push([[171],{4171:(e,s,t)=>{t.r(s),t.d(s,{default:()=>c});var i=t(5202),o=t(9665),a=t(4848);const c=()=>(0,a.jsxs)(a.Fragment,{children:[(0,a.jsx)(o.A,{}),(0,a.jsx)(i.A,{isMoblie:!0})]})}}]);
+//# sourceMappingURL=171.js.map?ver=cbbefe60358f9d293516
