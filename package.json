@@ -54,6 +54,8 @@
     "@babel/core": "^7.27.4",
     "@babel/node": "^7.27.1",
     "@babel/preset-env": "^7.27.2",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.17.57",
     "babel-loader": "^10.0.0",
