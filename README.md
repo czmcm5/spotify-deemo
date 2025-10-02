@@ -1,6 +1,3 @@
-# 타입스크립트 프로젝트
-
-## 환경설정
-- [x] webpack 설치
-- [x] Babel 설치
-- [x] router: react-router v7
+# Spotify 데모
+> spotify API를 활용한 데모 싸이트
+- 배포: https://spotify-deemo-dabin.netlify.app/ 
